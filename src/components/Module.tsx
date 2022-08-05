@@ -22,7 +22,12 @@ const SortableList = SortableContainer(({items}:any) => {
   );
 });
 
-class Module extends Component {
+class Module extends Component<any,any> {
+  constructor(props:any) {
+    super(props)
+    console.log(this.props);
+    
+  }
   state = {
     items: [{ name: "基本资料" }, { name: "我的简历" },{name:'求职意向'},{name:'教育背景'},{ name: "技能特长" }, { name: "校园经历" },{name:'实习经验'},{name:'工作经验'}],
   };
@@ -37,3 +42,5 @@ class Module extends Component {
 }
 
 export default Module;
+
+

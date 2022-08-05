@@ -1,6 +1,6 @@
 function Resuem(props:any) {
     return (<>
-        <div className="w-full">
+        <div className="w-full bg-gray-400">
             wod
         </div>
     </>);
