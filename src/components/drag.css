@@ -1,0 +1,8 @@
+.headbox{
+    background-color: blue;
+    width: 100%;
+    height: 200px;
+}
+.headbg{
+    background:linear-gradient(to right, #ec6ead, #3494e6);
+}
