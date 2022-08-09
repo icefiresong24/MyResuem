@@ -1,6 +1,18 @@
-interface Props{
+interface Props {
   items: Array<any>;
-  onSortEnd:void
+  onSortEnd: void;
+}
+interface Modules {
+  value:Section[]
+}
+interface Section {
+  name: string;
+  component: string;
+  show: boolean;
+  info: any
 }
 
-export default Props
+export type{
+  Section,
+  Modules
+};
