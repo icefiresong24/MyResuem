@@ -18,12 +18,12 @@ const reducer = (state = data, action: Action) => {
 
       return { value: result };
     case "STYLE":
-      let { module, element, property, value } = action.payload;
+      let { module, property, value } = action.payload;
       let index2 = state.value.findIndex((item: any) => {
         return item.component == module;
       });
       let result2 = JSON.parse(JSON.stringify(state));
-      result2.value[index2].style[element][property] = value;
+      result2.value[index2].style[property] = value;
 
       return result2;
     case "SHOW":

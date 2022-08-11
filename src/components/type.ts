@@ -9,7 +9,7 @@ interface Section {
   name: string;
   component: string;
   show: boolean;
-  info: any
+  style: any
 }
 
 export type{

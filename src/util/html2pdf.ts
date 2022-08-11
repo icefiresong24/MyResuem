@@ -26,7 +26,7 @@ const downloadPDF = (
 
   let context: any = canvas.getContext('2d');
   context.scale(2, 2);
-  context.translate(-eleOffsetLeft - abs, -eleOffsetTop);
+  // context.translate(-eleOffsetLeft - abs, -eleOffsetTop);
 
   html2canvas(el, {
     scale: 2, // 设置缩放

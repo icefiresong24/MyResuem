@@ -11,7 +11,7 @@ function Header(props:any) {
     }
   return (
     <>
-      <div className="h-20 bg-white-400 fixed top-0 w-full flex justify-center items-center">
+      <div className="h-20 bg-[32, 35, 41]-400 fixed top-0 w-full flex justify-center items-center">
         化简
       </div>
       <div className="headbg h-full w-full flex justify-center items-center flex-col">
@@ -25,9 +25,24 @@ function Header(props:any) {
         <h1>免费模板+用心设计</h1>
         <p>用心设计每一套模板，适合各行各业从业者</p>
         <div className="flex">
-          <img onClick={editResum} className="w-80  h40" src={template1} alt="" />
-          <img onClick={editResum} className="w-80  h40" src={template2} alt="" />
-          <img onClick={editResum} className="w-80  h40" src={template3} alt="" />
+          <img
+            onClick={editResum}
+            className="w-80  h40"
+            src={template1}
+            alt=""
+          />
+          <img
+            onClick={editResum}
+            className="w-80  h40"
+            src={template2}
+            alt=""
+          />
+          <img
+            onClick={editResum}
+            className="w-80  h40"
+            src={template3}
+            alt=""
+          />
         </div>
       </div>
     </>

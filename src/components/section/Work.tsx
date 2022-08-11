@@ -1,11 +1,11 @@
-function Work({info}:any) {
+function Work({style}:any) {
     return (
       <div className="w-full  ">
         <h4 className="font-bold ">项目经验</h4>
         <div className="w-full h-1 bg-gray-400 relative">
           <div className="w-1/4 h-full bg-blue-400 absolute"></div>
         </div>
-        {info.map((item: any, index: number) => (
+        {style.info.map((item: any, index: number) => (
           <div key={index}>
             <div className="flex justify-between">
               <span>

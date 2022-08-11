@@ -1,4 +1,4 @@
-function School({info}:any) {
+function School({style}:any) {
     return (
       <div className="w-full h-20 ">
         <h4 className="font-bold ">校园经历</h4>
@@ -6,7 +6,7 @@ function School({info}:any) {
           <div className="w-1/4 h-full bg-blue-400 absolute"></div>
         </div>
         <ul>
-          {info.map((item: any, index: number) => (
+          {style.info.map((item: any, index: number) => (
             <li className="flex justify-between" key={index}>
               {item}
             </li>

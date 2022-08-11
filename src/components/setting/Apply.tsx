@@ -1,68 +1,39 @@
-import { Select } from "antd";
-const { Option } = Select;
+import { Input,Button } from "antd";
+import { useEffect, useRef, useState } from "react";
 function Apply(props: any) {
-  function handleChange(element: string, property: string) {
-    return (value: string) => {
-      props.changeStyle("Apply", element, property, value);
-    };
+  let [duty, setDuty] = useState("");
+  let [salary,setSalary]=useState('')
+  let [status, setStatus] = useState("");
+  function handleChange() {
+    props.changeStyle("Apply", "info",  {
+      duty,
+      salary,
+      status,
+    });
   }
-  const fonts = [
-    "16px",
-    "18px",
-    "20px",
-    "22px",
-    "24px",
-    "26px",
-    "28px",
-    "30px",
-  ];
+  useEffect(() => {
+  console.log(duty);
+  
+  })
   return (
-    <div className="w-full">
-      <div className="w-full h-5 flex-center">求职</div>
+    <div className="w-full p-4">
+      <div className="w-full h-5 flex-center">求职意向</div>
       <div className="w-full">
-        <div className="w-full flex justify-between">
-          <div>主题颜色</div>
-          <div className="flex">
-            <div className="bg-red-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-blue-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-gray-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-green-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-dark-600 rounded-1/2 w-5 h-5"></div>
-          </div>
-        </div>
-        <div className="w-full flex">
-          <div>模块标题字体大小</div>
-          <Select
-            defaultValue="24px"
-            style={{ width: 120 }}
-            onChange={handleChange("title", "fontSize")}
-          >
-            {fonts.map((item: string, index: number) => {
-              return (
-                <Option value={item} key={index}>
-                  {item}
-                </Option>
-              );
-            })}
-          </Select>
-        </div>
-        <div className="w-full flex">
-          <div>正文字体大小</div>
-          <Select
-            defaultValue="18px"
-            style={{ width: 120 }}
-            onChange={handleChange("context", "fontSize")}
-          >
-            {fonts.map((item: string, index: number) => {
-              return (
-                <Option value={item} key={index}>
-                  {item}
-                </Option>
-              );
-            })}
-          </Select>
+        <div>职位</div>
+        <Input value={duty} onChange={(e)=>{
+        setDuty(e.target.value)}} name="duty" />
+        <div>
+          <div>薪资</div>
+          <Input value={salary} onChange={(e)=>setSalary(e.target.value)} name="salary" />
+          <div>在职状态</div>
+          <Input value={status} onChange={(e) => {
+          setStatus(e.target.value)
+          }} name="status" />
         </div>
       </div>
+    <Button type="primary" shape="round" className="mt-4" onClick={() => {
+    props.test()
+    }}>保存</Button>
     </div>
   );
 }
