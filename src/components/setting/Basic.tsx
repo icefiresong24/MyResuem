@@ -1,7 +1,10 @@
 import { Select,Input,Button } from "antd";
-import {useState} from 'react'
+import { useState } from 'react'
+import { Modules } from "../type";
+import { connect } from "react-redux";
 const { Option } = Select;
 function Basic(props: any) {
+  
     let [name, setName] = useState("");
     let [age, setAge] = useState("");
     let [address, setAddress] = useState("");
@@ -81,4 +84,21 @@ function Basic(props: any) {
   );
 }
 
-export default Basic;
+const mapStateToProps = (state: Modules) => {
+  return {
+    value: state.value,
+  };
+};
+const mapDispatchToProps = (dispatch: any) => ({
+  changeStyle: (module: string, property: string, value: any) =>
+    dispatch({
+      type: "STYLE",
+      payload: {
+        module,
+        property,
+        value,
+      },
+    }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Basic);

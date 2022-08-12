@@ -11,11 +11,7 @@ function Design(props: any) {
     const pdf = document.getElementById("pdf");
     downloadPDF(pdf!, "jianli", false, () => {});
   }
-  let [items, setItems] = useState<Modules>(data);
   let [select, setSelect] = useState<string>("");
-  const test = (val: string) => {
-    console.log("nihao", val);
-  };
   return (
     <>
       <div className="flex items-center bg-[#202329] text-white justify-between h-10">
@@ -38,32 +34,13 @@ function Design(props: any) {
           <Resuem  onSelect={setSelect}></Resuem>
         </section>
         <section className="w-140 bg-gray-500 p-4 <lg:hidden">
-          <Setting current={select} changeStyle={props.changeStyle}  />
+          <Setting current={select}   />
         </section>
       </div>
     </>
   );
 }
 
-const mapStateToProps = (state: Modules) => {
-  return {
-    value: state.value,
-  };
-};
-const mapDispatchToProps = (dispatch: any) => ({
-  changeStyle: (
-    module: string,
-    property: string,
-    value: any
-  ) =>
-    dispatch({
-      type: "STYLE",
-      payload: {
-        module,
-        property,
-        value,
-      },
-    }),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Design);
+
+export default (Design);

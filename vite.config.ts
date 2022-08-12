@@ -1,19 +1,24 @@
 import { defineConfig } from 'vite'
 import path from 'path'
 import react from '@vitejs/plugin-react'
-// import autoImport from 'unplugin-auto-import/vite'
+import autoImport from 'unplugin-auto-import/vite'
+// import  from ''
 import WindiCSS from "vite-plugin-windicss";
-console.log(path.resolve(__dirname + "src"));
+console.log(path.resolve(__dirname,"src"));
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      "@":path.resolve(__dirname+'src')
-    }
+      "@": path.resolve(__dirname, "src"),
+    },
   },
   server: {
     port: 3000,
-    open:true
+    open: true,
   },
-  plugins: [react(), WindiCSS()],
+  plugins: [
+    react(),
+    WindiCSS(),
+    autoImport({ imports: ["react"], dts: "src/auto-imports.d.ts" }),
+  ],
 });

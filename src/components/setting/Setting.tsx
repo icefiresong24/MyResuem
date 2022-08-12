@@ -11,9 +11,11 @@ import { useEffect } from "react";
 function Setting(props: any) {
   useEffect(() => {});
   const Element: any = function switchComponent({ name, changeStyle }: any) {
+    console.log('render ');
+    
     switch (name) {
       case "Basic":
-        return <Basic changeStyle={changeStyle} />;
+        return <Basic  />;
       case "Apply":
         return <Apply test={() => {
         console.log('click');
