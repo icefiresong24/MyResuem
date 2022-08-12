@@ -16,9 +16,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - name: Build
+      - name: Install
         run: |
           yarn  # 安装依赖
+      - name: Build
+        run: |
           npm run build  # 执行打包
       # 连接到ssh，并且做一个拷贝操作的action
       - name: Deploy 🚀

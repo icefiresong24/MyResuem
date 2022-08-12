@@ -46,7 +46,7 @@ const downloadPDF = (
     let imgWidth = 595.28;
     let imgHeight = (595.28 / contentWidth) * contentHeight;
     let pageData = canvas.toDataURL('image/jpeg', 1.0);
-    let pdf = new JsPDF('', 'pt', 'a4');
+    let pdf = new JsPDF('p', 'pt', 'a4');
 
     if (leftHeight < pageHeight) {
       //在pdf.addImage(pageData, 'JPEG', 左，上，宽度，高度)设置在pdf中显示；

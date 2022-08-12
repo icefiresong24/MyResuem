@@ -4,22 +4,29 @@ import { SortableContainer, SortableElement } from "react-sortable-hoc";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Modules } from "./type";
-
-const SortableItem = SortableElement(({ value, updateShow }: any) => {
+interface Props {
+  value: any;
+  updateShow:any
+}
+interface Element{
+  updateShow: any,
+  value:any
+}
+const SortableItem = SortableElement<Element>((props: Props) => {
   const onChange = (item: any) => {
     return (checked: any) => {
-      updateShow(item, checked);
+      props.updateShow(item, checked);
     };
   };
   return (
     <li className="list-none flex justify-between h-8 border-dark-50">
-      <div>{value.name}</div>
-      <Switch defaultChecked onChange={onChange(value)} />
+      <div>{props.value.name}</div>
+      <Switch defaultChecked onChange={onChange(props.value)} />
     </li>
   );
 });
 
-const SortableList = SortableContainer(({ items, updateShow }: any) => {
+const SortableList = SortableContainer<any>(({ items, updateShow }: any) => {
   return (
     <ul>
       {items.map((value: any, index: number) => (
