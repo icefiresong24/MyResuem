@@ -1,70 +1,91 @@
-import { Select } from "antd";
-const { Option } = Select;
+import { Input, Button } from "antd";
+import { connect } from "react-redux";
+import { Modules } from "../type";
+const { TextArea } = Input;
 function Skill(props: any) {
-  function handleChange(element: string, property: string) {
-    return (value: string) => {
-      props.changeStyle("Apply", element, property, value);
-    };
+  const { style } = props.value.find((item: any) => {
+    return item.component == "Skill";
+  });
+  let [info, setInfo] = useState(style.info);
+  function handleChange(value: string, index: number) {
+    setInfo((pre: any) => {
+      let info = JSON.parse(JSON.stringify(pre));
+      info[index] = value;
+      return info;
+    });
   }
-  const fonts = [
-    "16px",
-    "18px",
-    "20px",
-    "22px",
-    "24px",
-    "26px",
-    "28px",
-    "30px",
-  ];
   return (
-    <div className="w-full">
-      <div className="w-full h-5 flex-center">技能特长</div>
+    <div className="w-full p-4">
+      <div className="w-full h-5 flex-center">教育背景</div>
       <div className="w-full">
-        <div className="w-full flex justify-between">
-          <div>主题颜色</div>
-          <div className="flex">
-            <div className="bg-red-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-blue-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-gray-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-green-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-dark-600 rounded-1/2 w-5 h-5"></div>
-          </div>
-        </div>
-        <div className="w-full flex">
-          <div>模块标题字体大小</div>
-          <Select
-            defaultValue="24px"
-            style={{ width: 120 }}
-            onChange={handleChange("title", "fontSize")}
-          >
-            {fonts.map((item: string, index: number) => {
-              return (
-                <Option value={item} key={index}>
-                  {item}
-                </Option>
-              );
-            })}
-          </Select>
-        </div>
-        <div className="w-full flex">
-          <div>正文字体大小</div>
-          <Select
-            defaultValue="18px"
-            style={{ width: 120 }}
-            onChange={handleChange("context", "fontSize")}
-          >
-            {fonts.map((item: string, index: number) => {
-              return (
-                <Option value={item} key={index}>
-                  {item}
-                </Option>
-              );
-            })}
-          </Select>
-        </div>
+        {info.map((item: any, index: number) => {
+          return (
+            <div className="mt4" key={index}>
+              <div className="flex justify-between">
+                <div>技能{index + 1}</div>
+                <Button
+                  type="primary"
+                  shape="round"
+                  onClick={() => {
+                    setInfo((pre: unknown[]) => {
+                      let info = JSON.parse(JSON.stringify(pre));
+                      info.splice(index, 1);
+                      return info
+                    });
+                  }}
+                >
+                  删除
+                </Button>
+              </div>
+
+              <TextArea
+                rows={4}
+                value={item}
+                onChange={(e) => handleChange(e.target.value, index)}
+              />
+            </div>
+          );
+        })}
       </div>
+      <Button
+        type="primary"
+        shape="round"
+        className="mt-4"
+        onClick={() => {
+          setInfo([...info, ""]);
+        }}
+      >
+        添加
+      </Button>
+      <Button
+        type="primary"
+        shape="round"
+        className="mt-4"
+        onClick={() => {
+          props.changeStyle("Skill", "info", info);
+        }}
+      >
+        保存
+      </Button>
     </div>
   );
 }
 
-export default Skill;
+const mapStateToProps = (state: Modules) => {
+  return {
+    value: state.value,
+  };
+};
+const mapDispatchToProps = (dispatch: any) => ({
+  changeStyle: (module: string, property: string, value: any) =>
+    dispatch({
+      type: "STYLE",
+      payload: {
+        module,
+        property,
+        value,
+      },
+    }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Skill);

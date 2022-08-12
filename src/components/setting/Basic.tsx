@@ -2,14 +2,15 @@ import { Select,Input,Button } from "antd";
 import { useState } from 'react'
 import { Modules } from "../type";
 import { connect } from "react-redux";
-const { Option } = Select;
 function Basic(props: any) {
-  
-    let [name, setName] = useState("");
-    let [age, setAge] = useState("");
-    let [address, setAddress] = useState("");
-    let [phone, setPhone] = useState("");
-    let [email, setEmail] = useState("");
+  const {style}=props.value.find((item:any) => {
+  return item.component=='Basic'
+  })
+    let [name, setName] = useState(style.info.name);
+    let [age, setAge] = useState(style.info.age);
+    let [address, setAddress] = useState(style.info.address);
+    let [phone, setPhone] = useState(style.info.phone);
+    let [email, setEmail] = useState(style.info.email);
 
   function handleChange(){
       props.changeStyle("Basic", 'info',  {name,age,address,phone,email});

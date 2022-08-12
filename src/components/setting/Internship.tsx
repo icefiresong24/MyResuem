@@ -1,70 +1,142 @@
-import { Select } from "antd";
-const { Option } = Select;
-function Intership(props: any) {
-  function handleChange(element: string, property: string) {
-    return (value: string) => {
-      props.changeStyle("Apply", element, property, value);
-    };
+import { Input, Button, DatePicker, Space } from "antd";
+import { connect } from "react-redux";
+import { Modules } from "../type";
+const {TextArea}=Input
+import moment from "moment";
+const dateFormat = "YYYY/MM/DD";
+const { RangePicker } = DatePicker;
+function Internship(props: any) {
+  const { style } = props.value.find((item: any) => {
+    return item.component == "Internship";
+  });
+  let [info, setInfo] = useState(style.info);
+  function handledate(index: number, dateStrings: [string, string]) {
+    let [startTime, endTime] = dateStrings;
+    setInfo((pre: any) => {
+      let info = JSON.parse(JSON.stringify(pre));
+      info[index].startTime = startTime;
+      info[index].endTime = endTime;
+      return info;
+    });
   }
-  const fonts = [
-    "16px",
-    "18px",
-    "20px",
-    "22px",
-    "24px",
-    "26px",
-    "28px",
-    "30px",
-  ];
+  function handleChange(value: any, name: string, index: number) {
+    setInfo((pre: any) => {
+      let info = JSON.parse(JSON.stringify(pre));
+      info[index][name] = value;
+      return info;
+    });
+  }
   return (
-    <div className="w-full">
-      <div className="w-full h-5 flex-center">主题设置</div>
+    <div className="w-full p-4">
+      <div className="w-full h-5 flex-center">项目经验</div>
       <div className="w-full">
-        <div className="w-full flex justify-between">
-          <div>主题颜色</div>
-          <div className="flex">
-            <div className="bg-red-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-blue-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-gray-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-green-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-dark-600 rounded-1/2 w-5 h-5"></div>
-          </div>
-        </div>
-        <div className="w-full flex">
-          <div>模块标题字体大小</div>
-          <Select
-            defaultValue="24px"
-            style={{ width: 120 }}
-            onChange={handleChange("title", "fontSize")}
-          >
-            {fonts.map((item: string, index: number) => {
-              return (
-                <Option value={item} key={index}>
-                  {item}
-                </Option>
-              );
-            })}
-          </Select>
-        </div>
-        <div className="w-full flex">
-          <div>正文字体大小</div>
-          <Select
-            defaultValue="18px"
-            style={{ width: 120 }}
-            onChange={handleChange("context", "fontSize")}
-          >
-            {fonts.map((item: string, index: number) => {
-              return (
-                <Option value={item} key={index}>
-                  {item}
-                </Option>
-              );
-            })}
-          </Select>
-        </div>
+        {info.map((item: any, index: number) => {
+          return (
+            <div className="mt4" key={index}>
+              <div className="flex justify-between">
+                <div>项目{index + 1}</div>
+                <Button
+                  type="primary"
+                  shape="round"
+                  onClick={() => {
+                    setInfo((pre: unknown[]) => {
+                      let info = JSON.parse(JSON.stringify(pre));
+                      info.splice(index, 1);
+                      return info;
+                    });
+                  }}
+                >
+                  删除
+                </Button>
+              </div>
+
+              <div>时间</div>
+              <Space direction="vertical" size={12}>
+                <RangePicker
+                  defaultValue={[
+                    moment(item.startTime, dateFormat),
+                    moment(item.endTime, dateFormat),
+                  ]}
+                  format={dateFormat}
+                  onChange={(_, dateStrings: [string, string]) => {
+                    handledate(index, dateStrings);
+                  }}
+                />
+              </Space>
+              <div>公司</div>
+              <Input
+                value={item.company}
+                onChange={(e) => {
+                  handleChange(e.target.value, e.target.name, index);
+                }}
+                name="company"
+              />
+              <div>岗位</div>
+              <Input
+                value={item.role}
+                onChange={(e) => {
+                  handleChange(e.target.value, e.target.name, index);
+                }}
+                name="role"
+              />
+              <div>负责内容</div>
+              <TextArea
+                rows={4}
+                value={item.duty}
+                onChange={(e) => handleChange(e.target.value, "duty", index)}
+              />
+            </div>
+          );
+        })}
       </div>
+      <Button
+        type="primary"
+        shape="round"
+        className="mt-4"
+        onClick={() => {
+          setInfo([
+            ...info,
+            {
+              startTime: "2022-1-1",
+              endTime: "2022-1-1",
+              company: "****公司",
+              role: "前端负责人",
+              duty: "负责项目的核心模块前端设计和研发工作；",
+            },
+          ]);
+        }}
+      >
+        添加
+      </Button>
+      <Button
+        type="primary"
+        shape="round"
+        className="mt-4"
+        onClick={() => {
+          props.changeStyle("Internship", "info", info);
+        }}
+      >
+        保存
+      </Button>
     </div>
   );
 }
 
-export default Intership;
+const mapStateToProps = (state: Modules) => {
+  return {
+    value: state.value,
+  };
+};
+const mapDispatchToProps = (dispatch: any) => ({
+  changeStyle: (module: string, property: string, value: any) =>
+    dispatch({
+      type: "STYLE",
+      payload: {
+        module,
+        property,
+        value,
+      },
+    }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Internship);

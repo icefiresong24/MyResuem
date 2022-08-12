@@ -5,9 +5,12 @@ import { Modules } from "../type";
 
 
 function Apply(props: any) {
-  let [duty, setDuty] = useState("");
-  let [salary,setSalary]=useState('')
-  let [status, setStatus] = useState("");
+  const { style } = props.value.find((item: any) => {
+    return item.component == "Apply";
+  });
+  let [duty, setDuty] = useState(style.info.duty);
+  let [salary,setSalary]=useState(style.info.salary)
+  let [status, setStatus] = useState(style.info.status)
   function handleChange() {
     props.changeStyle("Apply", "info",  {
       duty,

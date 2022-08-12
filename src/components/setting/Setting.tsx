@@ -10,35 +10,30 @@ import Info from "./Info";
 import { useEffect } from "react";
 function Setting(props: any) {
   useEffect(() => {});
-  const Element: any = function switchComponent({ name, changeStyle }: any) {
-    console.log('render ');
-    
+  const Element: any = function switchComponent({ name }: any) {
     switch (name) {
       case "Basic":
         return <Basic  />;
       case "Apply":
-        return <Apply test={() => {
-        console.log('click');
-        
-        }} changeStyle={changeStyle} />;
+        return <Apply   />;
       case "Work":
-        return <Work changeStyle={changeStyle} />;
+        return <Work  />;
       case "Education":
-        return <Education changeStyle={changeStyle} />;
+        return <Education  />;
       case "Internship":
-        return <Internship changeStyle={changeStyle} />;
+        return <Internship  />;
       case "School":
-        return <School changeStyle={changeStyle} />;
+        return <School  />;
       case "Info":
-        return <Info changeStyle={changeStyle} />;
+        return <Info  />;
       case "Skill":
-        return <Skill changeStyle={changeStyle} />;
+        return <Skill  />;
       default:
-        return <Common changeStyle={changeStyle} />;
+        return <Common  />;
     }
   };
-  return <div className="bg-light-200 text-dark-400 h-full">
-    <Element name={props.current} changeStyle={props.changeStyle} />
+  return <div className="bg-light-200 overflow-y-auto text-dark-400 h-full">
+    <Element name={props.current}  />
     </div>
 }
 

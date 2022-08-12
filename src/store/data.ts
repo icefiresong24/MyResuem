@@ -114,8 +114,8 @@ const data: Data = {
       style: {
         info: [
           {
-            startTime: "2022.1.1",
-            endTime: "2022.1.1",
+            startTime: "2022-1-1",
+            endTime: "2022-1-1",
             company: "****公司",
             role: "前端负责人",
             duty: "负责项目的核心模块前端设计和研发工作；",
@@ -138,8 +138,8 @@ const data: Data = {
       style: {
         info: [
           {
-            startTime: "2022.1.1",
-            endTime: "2022.1.1",
+            startTime: "2022-08-13",
+            endTime: "2022-08-13",
             projectName: "后台管理系统",
             role: "前端负责人",
             description: "负责项目的核心模块前端设计和研发工作；",

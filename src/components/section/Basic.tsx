@@ -1,3 +1,4 @@
+import img from '@/assets/images/vx.jpg'
 function Basic({style}: any) {
 
     
@@ -13,10 +14,10 @@ function Basic({style}: any) {
               <span>{style.info.age}</span>&nbsp;|&nbsp;
               <span>{style.info.address}</span>&nbsp;|&nbsp;<span>{style.info.work}</span>
               &nbsp;|&nbsp;
-              <span>{style.info.phone}</span>&nbsp;|&nbsp;<span>{style.info.email}</span>
+              <span>{style.work}</span>&nbsp;&nbsp;<span>{style.info.email}</span>
             </div>
           </div>
-          <img src={style.title.img} className="w-30 h-30" alt="" />
+          <img src={style.img} className="w-30 h-30" alt="" />
         </div>
       </div>
     );
