@@ -4,6 +4,7 @@ import { Modules } from "../type";
 const { TextArea } = Input;
 
 import moment from 'moment'
+import { text2textarea } from "@/util/saveTextarea";
 const dateFormat = "YYYY/MM/DD";
 const { RangePicker } = DatePicker;
 function Work(props: any) {
@@ -21,6 +22,8 @@ function Work(props: any) {
     });
   }
   function handleChange(value: any, name: string, index: number) {
+    console.log(value);
+    
     setInfo((pre: any) => {
       let info = JSON.parse(JSON.stringify(pre));
       info[index][name] = value;

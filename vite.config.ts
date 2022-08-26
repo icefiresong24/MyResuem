@@ -1,3 +1,4 @@
+import myplugin from './src/plugins'
 import { defineConfig } from 'vite'
 import path from 'path'
 import react from '@vitejs/plugin-react'
@@ -14,6 +15,7 @@ export default defineConfig({
     open: true,
   },
   plugins: [
+    myplugin(),
     react(),
     WindiCSS(),
     autoImport({ imports: ["react"], dts: "src/auto-imports.d.ts" }),

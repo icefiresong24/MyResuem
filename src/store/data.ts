@@ -22,7 +22,7 @@ const data: Data = {
           email: "qq@.com",
           phone: "11111111111",
         },
-        img: "@/assets/images/vx.jpg",
+        img: "../assets/images/vx.jpg",
         title: {
           color: "black",
           fontSize: "24px",

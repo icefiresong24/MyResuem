@@ -3,8 +3,7 @@ function Basic({style}: any) {
 
     
     return (
-      <div className="w-full h-40 flex-center">
-        <div className="flex justify-around">
+      <div className="w-full h-40 flex justify-between items-center">
           <div
             className="flex justify-center flex-col"
             style={{ fontSize: style.context.fontSize }}
@@ -18,7 +17,6 @@ function Basic({style}: any) {
             </div>
           </div>
           <img src={style.img} className="w-30 h-30" alt="" />
-        </div>
       </div>
     );
 }
