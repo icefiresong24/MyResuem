@@ -4,7 +4,7 @@ const { Option } = Select;
 function Common(props: any) {
   function exportPDF() {
     const pdf = document.getElementById("pdf");
-    downloadPDF(pdf!, "jianli", false, () => {});
+    downloadPDF(pdf!, "前端开发工程师", false, () => {});
   }
   function handleChange(element: string, property: string) {
     return (value: string) => {

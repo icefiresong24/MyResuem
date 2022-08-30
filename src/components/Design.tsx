@@ -11,13 +11,17 @@ import "./desing.scss";
 function Design(props: any) {
   
   let [select, setSelect] = useState<string>("");
-  
+  function goGithub() {
+    window.open ("https://github.com/icefiresong24/MyResuem");
+  }
   return (
     <>
       <div className="flex items-center bg-[#202329] text-white justify-between h-10">
-        <div>github</div>
+        <div className="cursor-pointer" onClick={goGithub}>
+          github
+        </div>
         <div className="flex">
-          <div>我的简历</div>
+          <div>前端开发工程师</div>
         </div>
         <div>登录</div>
       </div>
@@ -36,7 +40,6 @@ function Design(props: any) {
         <section className="w-140 bg-gray-500 p-4 <lg:hidden">
           <Setting current={select} onSelect={setSelect} />
         </section>
-        
       </div>
     </>
   );
