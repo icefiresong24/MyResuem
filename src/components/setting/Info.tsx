@@ -1,4 +1,6 @@
+import { LeftOutlined } from "@ant-design/icons";
 import { Select } from "antd";
+import { Fragment } from "react";
 const { Option } = Select;
 function Info(props: any) {
   function handleChange(element: string, property: string) {
@@ -17,6 +19,16 @@ function Info(props: any) {
     "30px",
   ];
   return (
+    <Fragment>
+      <LeftOutlined />
+      <span
+        className="cursor-pointer"
+        onClick={() => {
+          props.onSelect("");
+        }}
+      >
+        返回
+      </span>
     <div className="w-full">
       <div className="w-full h-5 flex-center">主题设置</div>
       <div className="w-full">
@@ -63,7 +75,8 @@ function Info(props: any) {
           </Select>
         </div>
       </div>
-    </div>
+      </div>
+      </Fragment>
   );
 }
 

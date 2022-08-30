@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { Modules } from "../type";
 const { TextArea } = Input;
 
-import moment from 'moment'
+import moment from "moment";
 import { text2textarea } from "@/util/saveTextarea";
+import { LeftOutlined } from "@ant-design/icons";
+import { Fragment } from "react";
 const dateFormat = "YYYY/MM/DD";
 const { RangePicker } = DatePicker;
 function Work(props: any) {
@@ -13,7 +15,7 @@ function Work(props: any) {
   });
   let [info, setInfo] = useState(style.info);
   function handledate(index: number, dateStrings: [string, string]) {
-    let [startTime, endTime] = dateStrings
+    let [startTime, endTime] = dateStrings;
     setInfo((pre: any) => {
       let info = JSON.parse(JSON.stringify(pre));
       info[index].startTime = startTime;
@@ -23,7 +25,7 @@ function Work(props: any) {
   }
   function handleChange(value: any, name: string, index: number) {
     console.log(value);
-    
+
     setInfo((pre: any) => {
       let info = JSON.parse(JSON.stringify(pre));
       info[index][name] = value;
@@ -31,6 +33,16 @@ function Work(props: any) {
     });
   }
   return (
+    <Fragment>
+      <LeftOutlined />
+      <span
+        className="cursor-pointer"
+        onClick={() => {
+          props.onSelect("");
+        }}
+      >
+        返回
+      </span>
     <div className="w-full p-4">
       <div className="w-full h-5 flex-center">项目经验</div>
       <div className="w-full">
@@ -70,7 +82,9 @@ function Work(props: any) {
               <TextArea
                 rows={4}
                 value={item.description}
-                onChange={(e) => handleChange(e.target.value,'description', index)}
+                onChange={(e) =>
+                  handleChange(e.target.value, "description", index)
+                }
               />
             </div>
           );
@@ -105,7 +119,8 @@ function Work(props: any) {
       >
         保存
       </Button>
-    </div>
+      </div>
+      </Fragment>
   );
 }
 

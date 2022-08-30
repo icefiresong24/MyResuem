@@ -1,6 +1,11 @@
-import { Select } from "antd";
+import downloadPDF from "@/util/html2pdf";
+import { Button, Select } from "antd";
 const { Option } = Select;
 function Common(props: any) {
+  function exportPDF() {
+    const pdf = document.getElementById("pdf");
+    downloadPDF(pdf!, "jianli", false, () => {});
+  }
   function handleChange(element: string, property: string) {
     return (value: string) => {
       props.changeStyle("Apply", element, property, value);
@@ -61,6 +66,19 @@ function Common(props: any) {
               );
             })}
           </Select>
+        </div>
+        <div className="">
+          <Button type="primary" shape="default" className="mt-4 block">
+            跟换模板
+          </Button>
+          <Button
+            type="primary"
+            shape="default"
+            className="mt-4 block"
+            onClick={exportPDF}
+          >
+            PDF下载
+          </Button>
         </div>
       </div>
     </div>

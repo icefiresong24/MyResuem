@@ -14,7 +14,7 @@ function Internship({style}:any) {
               <span>{item.company}</span>
             </div>
             <div>{item.role}</div>
-            <div>{item.duty}</div>
+            <div className="whitespace-pre">{item.duty}</div>
           </div>
         ))}
       </div>

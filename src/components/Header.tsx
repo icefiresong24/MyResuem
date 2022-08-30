@@ -12,7 +12,7 @@ function Header(props:any) {
   return (
     <>
       <div className="h-20 bg-[32, 35, 41]-400 fixed top-0 w-full flex justify-center items-center">
-        化简
+        github
       </div>
       <div className="headbg h-full w-full flex justify-center items-center flex-col">
         <h1>一款开源的、免费的简历设计神器</h1>

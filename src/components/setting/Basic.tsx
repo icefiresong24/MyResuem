@@ -1,7 +1,8 @@
 import { Select,Input,Button } from "antd";
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Modules } from "../type";
 import { connect } from "react-redux";
+import { LeftOutlined } from "@ant-design/icons";
 function Basic(props: any) {
   const {style}=props.value.find((item:any) => {
   return item.component=='Basic'
@@ -25,6 +26,16 @@ function Basic(props: any) {
     };
   }
   return (
+    <Fragment>
+      <LeftOutlined />
+      <span
+        className="cursor-pointer"
+        onClick={() => {
+          props.onSelect("");
+        }}
+      >
+        返回
+      </span>
     <div className="w-full p-4">
       <div className="w-full h-5 flex-center">基本资料</div>
       <div className="w-full">
@@ -81,7 +92,8 @@ function Basic(props: any) {
       >
         保存
       </Button>
-    </div>
+      </div>
+      </Fragment>
   );
 }
 

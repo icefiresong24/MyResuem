@@ -31,7 +31,6 @@ const Element: any = function switchComponent({ name, info, style }: any) {
   }
 };
 function Resuem(props: any) {
-  let [select,setSelect]=useState("")
   useEffect(() => {});
   return (
     <>
@@ -41,11 +40,11 @@ function Resuem(props: any) {
             return (
               <div
                 onClick={() => {
-                  props.onSelect(item.component), setSelect(item.component);
+                  props.onSelect(item.component)
                 }}
                 key={index}
                 className={
-                  (select == item.component
+                  (props.current == item.component
                     ? " border border-green-400 border-dashed"
                     : "")
                 }

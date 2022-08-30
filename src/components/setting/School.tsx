@@ -1,4 +1,6 @@
+import { LeftOutlined } from "@ant-design/icons";
 import { Input, Button } from "antd";
+import { Fragment } from "react";
 import { connect } from "react-redux";
 import { Modules } from "../type";
 const { TextArea } = Input;
@@ -15,6 +17,16 @@ function School(props: any) {
     });
   }
   return (
+    <Fragment>
+      <LeftOutlined />
+      <span
+        className="cursor-pointer"
+        onClick={() => {
+          props.onSelect("");
+        }}
+      >
+        返回
+      </span>
     <div className="w-full p-4">
       <div className="w-full h-5 flex-center">校园经历</div>
       <div className="w-full">
@@ -67,7 +79,8 @@ function School(props: any) {
       >
         保存
       </Button>
-    </div>
+      </div>
+      </Fragment>
   );
 }
 

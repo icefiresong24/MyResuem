@@ -17,12 +17,14 @@ const data: Data = {
         info: {
           name: "冰与火之歌",
           age: 25,
-          work: 3,
+          work: '3年',
           address: "维斯特洛",
-          email: "qq@.com",
-          phone: "11111111111",
+          email: "863548227qq@.com",
+          phone: "13122221111",
+          job: '前端开发工程师',
+          github:'www.baidu.com'
         },
-        img: "../assets/images/vx.jpg",
+        img: "",
         title: {
           color: "black",
           fontSize: "24px",

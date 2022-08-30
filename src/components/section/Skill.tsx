@@ -1,3 +1,4 @@
+import svg from '@/assets/bg.jpg'
 function Skill({ style }: any) {
   return (
     <div className="w-full  ">
