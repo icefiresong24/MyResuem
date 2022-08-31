@@ -12,9 +12,12 @@ function Basic(props: any) {
     let [address, setAddress] = useState(style.info.address);
     let [phone, setPhone] = useState(style.info.phone);
     let [email, setEmail] = useState(style.info.email);
+    let [work, setWork] = useState(style.info.work);
+    let [job, setJob] = useState(style.info.job);
+    let [github, setGithub] = useState(style.info.github);
 
   function handleChange(){
-      props.changeStyle("Basic", 'info',  {name,age,address,phone,email});
+      props.changeStyle("Basic", 'info',  {name,age,work,job,address,phone,email,github});
     };
   
   function upload(e: any) {
@@ -80,6 +83,14 @@ function Basic(props: any) {
             setAddress(e.target.value);
           }}
           name="address"
+          />
+          <div>github</div>
+        <Input
+          value={github}
+          onChange={(e) => {
+            setGithub(e.target.value);
+          }}
+          name="github"
         />
         <div>上传头像</div>
         <input type="file" onChange={upload} />

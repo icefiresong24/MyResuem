@@ -10,31 +10,31 @@ import { Modules } from "../type";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 
-const Element: any = function switchComponent({ name, info, style }: any) {
+const Element: any = function switchComponent({ name, info, style,global }: any) {
   switch (name) {
     case "Basic":
-      return <Basic info={info} style={style} />;
+      return <Basic info={info} style={style} global={global}/>;
     case "Apply":
-      return <Apply info={info} style={style} />;
+      return <Apply info={info} style={style} global={global}/>;
     case "Work":
-      return <Work info={info} style={style} />;
+      return <Work info={info} style={style} global={global}/>;
     case "Education":
-      return <Education info={info} style={style} />;
+      return <Education info={info} style={style} global={global}/>;
     case "Internship":
-      return <Internship info={info} style={style} />;
+      return <Internship info={info} style={style} global={global}/>;
     case "School":
-      return <School info={info} style={style} />;
+      return <School info={info} style={style} global={global} />;
     case "Info":
-      return <Info info={info} style={style} />;
+      return <Info info={info} style={style} global={global}/>;
     case "Skill":
-      return <Skill info={info} style={style} />;
+      return <Skill info={info} style={style} global={global}/>;
   }
 };
 function Resuem(props: any) {
   useEffect(() => {});
   return (
     <>
-      <div className="w-full h-full overflow-y-auto text-dark-400  px-10 bg-light-100" id="pdf">
+      <div className="w-150 h-210 overflow-y-auto text-dark-400  px-10 bg-light-100" id="pdf">
         {props.value.map((item: any, index: number) => {
           if (item.show) {
             return (
@@ -53,6 +53,7 @@ function Resuem(props: any) {
                   name={item.component}
                   info={item.info}
                   style={item.style}
+                  global={props.global}
                 />
               </div>
             );
@@ -68,6 +69,7 @@ function Resuem(props: any) {
 const mapStateToProps = (state: Modules) => {
   return {
     value: state.value,
+    global:state.global
   };
 };
 const mapDispatchToProps = (dispatch: any) => ({

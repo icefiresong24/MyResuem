@@ -26,15 +26,16 @@ function Design(props: any) {
         <div>登录</div>
       </div>
       <div className=" bg flex justify-center bg-[#353944] text-light-100  w-full h-[calc(100%-2.5rem)]">
-        <section className=" <sm:hidden">
+        <section className=" <sm:hidden mr-10">
           <div className="h-10">模块选择</div>
           <Module
+            
           // value={items.value}
           // onChange={updateArray}
           // onHidden={hiddenModule}
           ></Module>
         </section>
-        <section className="mr-10 p-4 w-158 <sm:w-full <lg:w-149 bg-gray-400">
+        <section className="mr-10  w-158 <sm:w-full <lg:w-149 bg-gray-400">
           <Resuem current={select} onSelect={setSelect}></Resuem>
         </section>
         <section className="w-140 bg-gray-500 p-4 <lg:hidden">

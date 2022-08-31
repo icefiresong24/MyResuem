@@ -4,7 +4,7 @@ import data from "./data";
 import { Modules } from "../components/type";
 import { json } from "node:stream/consumers";
 type Action = {
-  type: "MOVE" | "SHOW" | "STYLE";
+  type: "MOVE" | "SHOW" | "STYLE" | "GLOBAL";
   payload: any;
 };
 const reducer = (state = data, action: Action) => {
@@ -36,6 +36,15 @@ const reducer = (state = data, action: Action) => {
         result.value[index].show = action.payload.checked;
         return result;
       }
+    case "GLOBAL":
+      let { theme, color } = action.payload;
+      console.log(theme,color);
+      
+      let result3 = JSON.parse(JSON.stringify(state));
+      result3.global[theme] = color;
+
+      return result3;
+
     default:
       return state;
   }

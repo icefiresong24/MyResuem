@@ -3,7 +3,8 @@ interface Props {
   onSortEnd: void;
 }
 interface Modules {
-  value:Section[]
+  value: Section[];
+  global:Object
 }
 interface Section {
   name: string;

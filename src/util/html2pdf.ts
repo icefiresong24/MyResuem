@@ -10,17 +10,17 @@ const downloadPDF = (
   let eleW: number = el.offsetWidth; // 获得该容器的宽
   let eleH: number = el.offsetHeight; // 获得该容器的高
 
-  let eleOffsetTop: number = el.offsetTop; // 获得该容器到文档顶部的距离
-  let eleOffsetLeft: number = el.offsetLeft; // 获得该容器到文档最左的距离
+  // let eleOffsetTop: number = el.offsetTop; // 获得该容器到文档顶部的距离
+  // let eleOffsetLeft: number = el.offsetLeft; // 获得该容器到文档最左的距离
 
   let canvas: HTMLCanvasElement = document.createElement('canvas');
-  let abs: number = 0;
-  let win_in: number = document.documentElement.clientWidth || document.body.clientWidth; // 获得当前可视窗口的宽度（不包含滚动条）
-  let win_out: number = window.innerWidth; // 获得当前窗口的宽度（包含滚动条）
+  // let abs: number = 0;
+  // let win_in: number = document.documentElement.clientWidth || document.body.clientWidth; // 获得当前可视窗口的宽度（不包含滚动条）
+  // let win_out: number = window.innerWidth; // 获得当前窗口的宽度（包含滚动条）
 
-  if (win_out > win_in) {
-    abs = (win_out - win_in) / 2; // 获得滚动条宽度的一半
-  }
+  // if (win_out > win_in) {
+  //   abs = (win_out - win_in) / 2; // 获得滚动条宽度的一半
+  // }
   canvas.width = eleW * 2; // 将画布宽&&高放大两倍
   canvas.height = eleH * 2;
 
@@ -32,7 +32,7 @@ const downloadPDF = (
     scale: 2, // 设置缩放
     useCORS: true, // 允许canvas画布内 可以跨域请求外部链接图片, 允许跨域请求。,
     logging: false // 打印日志用的 可以不加默认为false
-  }).then((canvas:any) => {
+  }).then((canvas: any) => {
     // el.setAttribute("crossOrigin",'anonymous');
     let contentWidth = canvas.width;
     let contentHeight = canvas.height;

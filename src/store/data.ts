@@ -1,11 +1,12 @@
-interface Data{
-  value:Module[]
+interface Data {
+  value: Module[];
+  global:any
 }
-interface Module{
-  name: string,
-  component: string,
-  show: boolean,
-  style:Nobject
+interface Module {
+  name: string;
+  component: string;
+  show: boolean;
+  style: Nobject;
 }
 const data: Data = {
   value: [
@@ -17,12 +18,12 @@ const data: Data = {
         info: {
           name: "冰与火之歌",
           age: 25,
-          work: '3年',
+          work: "3年",
           address: "维斯特洛",
           email: "863548227qq@.com",
           phone: "13122221111",
-          job: '前端开发工程师',
-          github:'www.baidu.com'
+          job: "前端开发工程师",
+          github: "www.baidu.com",
         },
         img: "",
         title: {
@@ -80,8 +81,11 @@ const data: Data = {
       show: true,
       style: {
         info: [
-          "熟练掌握 Vue2、3 及周边生态开发应用程序。结合 HTML5、CSS3 编写高质量、符合语义化的代码；",
-          "熟练掌握 Element UI、Ant Design、Echarts 等 UI 库，实现快速构建网页；",
+          "熟练掌握 Vue2、3 及周边生态开发应用程序。结合 HTML5、CSS3 编写高质量、符合语义化的代码",
+          "熟练掌握Element UI、Ant Design、Echarts 等 UI 库，实现快速构建网页；",
+          "熟练使用 TypeScript,React,ECMAScript6 语法，实际运用；",
+          "熟练使用 Webpack、Vite、Babel 项目打包工具，Git 版本控制工具，实现多人协同开发。",
+          "熟悉 HTTP 协议、Linux 系统常用操作，node。",
         ],
         title: {
           color: "black",
@@ -118,7 +122,7 @@ const data: Data = {
           {
             startTime: "2022-1-1",
             endTime: "2022-1-1",
-            company: "****公司",
+            company: "996神仙难活公司",
             role: "前端负责人",
             duty: "负责项目的核心模块前端设计和研发工作；",
           },
@@ -142,9 +146,23 @@ const data: Data = {
           {
             startTime: "2022-08-13",
             endTime: "2022-08-13",
-            projectName: "后台管理系统",
+            projectName: "上班摸鱼管理系统",
             role: "前端负责人",
-            description: "负责项目的核心模块前端设计和研发工作；",
+            description: "1、动态绑定全局样式变量，实现项目主题切换\n2、封装 execel 文件常用上传、下载、编辑、预览功能。\n3、实现自定义拖拽，复制，防抖，节流指令。\n4、使用动态路由实现按钮级别权限控制。",
+          },
+          {
+            startTime: "2022-08-13",
+            endTime: "2022-08-13",
+            projectName: "下班喝酒管理系统",
+            role: "前端负责人",
+            description: "1、动态绑定全局样式变量，实现项目主题切换\n2、封装 execel 文件常用上传、下载、编辑、预览功能。\n3、实现自定义拖拽，复制，防抖，节流指令。\n4、使用动态路由实现按钮级别权限控制。",
+          },
+          {
+            startTime: "2022-08-13",
+            endTime: "2022-08-13",
+            projectName: "放假屏蔽管理系统",
+            role: "前端负责人",
+            description: "1、动态绑定全局样式变量，实现项目主题切换\n2、封装 execel 文件常用上传、下载、编辑、预览功能。\n3、实现自定义拖拽，复制，防抖，节流指令。\n4、使用动态路由实现按钮级别权限控制。",
           },
         ],
         title: {
@@ -158,6 +176,11 @@ const data: Data = {
       },
     },
   ],
+  global: {
+    theme: 'black',
+    text:'14px',
+    title:'18px'
+  }
 };
 
-export default data
+export default data;

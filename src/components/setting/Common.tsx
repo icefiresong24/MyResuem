@@ -1,5 +1,7 @@
 import downloadPDF from "@/util/html2pdf";
 import { Button, Select } from "antd";
+import { connect } from "react-redux";
+import { Modules } from "../type";
 const { Option } = Select;
 function Common(props: any) {
   function exportPDF() {
@@ -8,7 +10,7 @@ function Common(props: any) {
   }
   function handleChange(element: string, property: string) {
     return (value: string) => {
-      props.changeStyle("Apply", element, property, value);
+      props.changeGlobalStyle(property, value);
     };
   }
   const fonts = [
@@ -23,24 +25,51 @@ function Common(props: any) {
   ];
   return (
     <div className="w-full">
-      <div className="w-full h-5 flex-center">主题设置</div>
+      <h1 className="w-full h-5 flex-center font-bold font-size">主题设置</h1>
       <div className="w-full">
         <div className="w-full flex justify-between">
           <div>主题颜色</div>
           <div className="flex">
-            <div className="bg-red-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-blue-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-gray-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-green-400 rounded-1/2 w-5 h-5"></div>
-            <div className="bg-dark-600 rounded-1/2 w-5 h-5"></div>
+            <div
+              onClick={() => {
+                props.changeGlobalStyle("theme", "red");
+              }}
+              className="bg-red-400 rounded-1/2 w-5 h-5"
+            ></div>
+            <div
+              onClick={() => {
+                props.changeGlobalStyle("theme", "blue");
+              }}
+              className="bg-blue-400 rounded-1/2 w-5 h-5"
+            ></div>
+            <div
+              onClick={() => {
+                props.changeGlobalStyle("theme", "gray");
+              }}
+              className="bg-gray-400 rounded-1/2 w-5 h-5"
+            ></div>
+            <div
+              onClick={() => {
+                props.changeGlobalStyle("theme", "green");
+              }}
+              className="bg-green-400 rounded-1/2 w-5 h-5"
+            ></div>
+            <div
+              onClick={() => {
+                props.changeGlobalStyle("theme", "black");
+              }}
+              className="bg-dark-600 rounded-1/2 w-5 h-5"
+            ></div>
           </div>
         </div>
         <div className="w-full flex">
           <div>模块标题字体大小</div>
           <Select
-            defaultValue="24px"
+            defaultValue="18px"
             style={{ width: 120 }}
-            onChange={handleChange("title", "fontSize")}
+            onChange={(value) => {
+              props.changeGlobalStyle("title", value);
+            }}
           >
             {fonts.map((item: string, index: number) => {
               return (
@@ -54,9 +83,11 @@ function Common(props: any) {
         <div className="w-full flex">
           <div>正文字体大小</div>
           <Select
-            defaultValue="18px"
+            defaultValue="14px"
             style={{ width: 120 }}
-            onChange={handleChange("context", "fontSize")}
+            onChange={(value) => {
+              props.changeGlobalStyle("text", value);
+            }}
           >
             {fonts.map((item: string, index: number) => {
               return (
@@ -85,4 +116,21 @@ function Common(props: any) {
   );
 }
 
-export default Common;
+const mapStateToProps = (state: Modules) => {
+  return {
+    value: state.value,
+    global:state.global
+  };
+};
+const mapDispatchToProps = (dispatch: any) => ({
+  changeGlobalStyle: (theme: string, color: any) =>
+    dispatch({
+      type: "GLOBAL",
+      payload: {
+        theme,
+        color,
+      },
+    }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Common);
