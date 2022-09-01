@@ -11,13 +11,7 @@ https://icefiresong24.github.io/
 
 **图片：**
 
-<p align="center"><img width="1000" src="https://gitee.com/sharemore52/resume-design/raw/main/doc/images/3.png"></p>
-
-
-<p align="center"><img width="1000" src="https://gitee.com/sharemore52/resume-design/raw/main/doc/images/4.png"></p>
-
-
-<p align="center"><img width="1000" src="https://gitee.com/sharemore52/resume-design/raw/main/doc/images/6.png"></p>
+![image](https://user-images.githubusercontent.com/67216778/187828624-9f073936-d718-4549-b742-82b1d1059f96.png)
 
 ## 功能介绍
 
