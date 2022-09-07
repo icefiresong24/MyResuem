@@ -16,6 +16,8 @@ const SortableItem = SortableElement<Element>((props: Props) => {
   const onChange = (item: any) => {
     return (checked: any) => {
       props.updateShow(item, checked);
+      console.log('niaho');
+      
     };
   };
   return (
@@ -50,12 +52,7 @@ class Module extends Component<any, any> {
   onChange = (item: any) => {
     return (checked: any) => {};
   };
-  componentDidUpdate(prevProps: any) {
-    // 典型用法（不要忘记比较 props）：
-  }
-  // state = {
-  //   items: [{ name: "基本资料" }, { name: "我的简历" },{name:'求职意向'},{name:'教育背景'},{ name: "技能特长" }, { name: "校园经历" },{name:'实习经验'},{name:'工作经验'}],
-  // };
+ 
   onSortEnd = ({ oldIndex, newIndex }: any) => {
     this.props.moveArray(oldIndex, newIndex);
   };

@@ -9,10 +9,23 @@ import downloadPDF from "../util/html2pdf";
 import Setting from "./setting/Setting";
 import "./desing.scss";
 function Design(props: any) {
-  
+  useEffect(() => {
+    //ResizeObserver监听简历内容高度变化，改变简历对应生成PDF高度
+    const dom = document.getElementById("pdf");
+    let observer = new ResizeObserver((entries: ResizeObserverEntry[]) =>
+      entries.forEach((item) => {
+        let height = item.contentRect.height;
+        console.log(height);
+
+        dom!.style.height = Math.ceil(height / 841) * 841 + "px";
+      })
+    );
+    observer.observe(dom!);
+  });
   let [select, setSelect] = useState<string>("");
+  //跳转GitHub
   function goGithub() {
-    window.open ("https://github.com/icefiresong24/MyResuem");
+    window.open("https://github.com/icefiresong24/MyResuem");
   }
   return (
     <>
@@ -25,20 +38,15 @@ function Design(props: any) {
         </div>
         <div>登录</div>
       </div>
-      <div className=" bg flex justify-center bg-[#353944] text-light-100  w-full h-[calc(100%-2.5rem)]">
+      <div className=" bg flex justify-around bg-[#353944] text-light-100  w-full h-[calc(100%-2.5rem)]">
         <section className=" <sm:hidden mr-10">
           <div className="h-10">模块选择</div>
-          <Module
-            
-          // value={items.value}
-          // onChange={updateArray}
-          // onHidden={hiddenModule}
-          ></Module>
+          <Module></Module>
         </section>
-        <section className="mr-10  w-158 <sm:w-full <lg:w-149 bg-gray-400">
+        <section className="bg-gray-400 h-full overflow-auto <sm:w-full <lg:w-149 ">
           <Resuem current={select} onSelect={setSelect}></Resuem>
         </section>
-        <section className="w-140 bg-gray-500 p-4 <lg:hidden">
+        <section className="w-140  <lg:hidden">
           <Setting current={select} onSelect={setSelect} />
         </section>
       </div>

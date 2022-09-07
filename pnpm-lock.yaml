@@ -9,7 +9,7 @@ specifiers:
   '@vitejs/plugin-react': ^2.0.0
   antd: ^4.22.3
   array-move: ^4.0.0
-  html2canvas: ^1.4.1
+  html2canvas: 1.4.0
   jspdf: ^2.5.1
   moment: ^2.29.4
   react: ^18.2.0
@@ -30,7 +30,7 @@ dependencies:
   '@ant-design/icons': 4.7.0_biqbaboplfbrettd7655fr4n2y
   antd: 4.22.3_biqbaboplfbrettd7655fr4n2y
   array-move: 4.0.0
-  html2canvas: 1.4.1
+  html2canvas: 1.4.0
   jspdf: 2.5.1
   moment: 2.29.4
   react: 18.2.0
@@ -755,6 +755,11 @@ packages:
     hasBin: true
     dev: false
 
+  /base64-arraybuffer/0.2.0:
+    resolution: {integrity: sha512-7emyCsu1/xiBXgQZrscw/8KPRT44I4Yq9Pe6EGs3aPRTsWuggML1/1DTuZUuIaJPIm1FTDUVXl4x/yW8s0kQDQ==}
+    engines: {node: '>= 0.6.0'}
+    dev: false
+
   /base64-arraybuffer/1.0.2:
     resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
     engines: {node: '>= 0.6.0'}
@@ -890,11 +895,18 @@ packages:
       yaml: 1.10.2
     dev: true
 
+  /css-line-break/2.0.1:
+    resolution: {integrity: sha512-gwKYIMUn7xodIcb346wgUhE2Dt5O1Kmrc16PWi8sL4FTfyDj8P5095rzH7+O8CTZudJr+uw2GCI/hwEkDJFI2w==}
+    dependencies:
+      base64-arraybuffer: 0.2.0
+    dev: false
+
   /css-line-break/2.1.0:
     resolution: {integrity: sha512-FHcKFCZcAha3LwfVBhCQbW2nCNbkZXn7KVUJcsT5/P8YmfsVja0FMPJr0B903j/E69HUphKiV9iQArX8SDYA4w==}
     dependencies:
       utrie: 1.0.2
     dev: false
+    optional: true
 
   /csstype/3.1.0:
     resolution: {integrity: sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==}
@@ -1254,6 +1266,14 @@ packages:
       react-is: 16.13.1
     dev: false
 
+  /html2canvas/1.4.0:
+    resolution: {integrity: sha512-vQMssxs2HvLuy7T0JrQqirRQxnhfB7KaHRSsQVV2WaNlXMqqhwv0gH+JUkkaWCednbDWZtRF7Msb/pbTkbcrpA==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      css-line-break: 2.0.1
+      text-segmentation: 1.0.3
+    dev: false
+
   /html2canvas/1.4.1:
     resolution: {integrity: sha512-fPU6BHNpsyIhr8yyMpTLLxAbkaK8ArIBcmZIRiBLiDhjeqvXolaEmDGmELFuX9I4xDcaKKcJl+TKZLqruBbmWA==}
     engines: {node: '>=8.0.0'}
@@ -1261,6 +1281,7 @@ packages:
       css-line-break: 2.1.0
       text-segmentation: 1.0.3
     dev: false
+    optional: true
 
   /immutable/4.1.0:
     resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
