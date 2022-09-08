@@ -5,9 +5,8 @@ function Apply({ style, global }: any) {
         <i className="iconfont icon-qiuzhi" style={{ color: global.theme }}></i>
         求职意向
       </div>
-      <div className=" bg-gray-400  mt-2">
-        {/* <div className="w-1/4 h-full bg-blue-400 "></div> */}
-        niaho
+      <div className="w-full h-1 bg-gray-400 relative">
+        <div className="w-1/4 h-full bg-blue-400 absolute"></div>
       </div>
       <div className="flex justify-between" style={{ fontSize: global.text }}>
         <span>{style.info.duty}</span>

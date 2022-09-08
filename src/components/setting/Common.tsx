@@ -63,9 +63,27 @@ function Common(props: any) {
           </div>
         </div>
         <div className="w-full flex">
-          <div>模块标题字体大小</div>
+          <div>模块间距</div>
           <Select
             defaultValue="18px"
+            style={{ width: 120 }}
+            onChange={(value) => {
+              props.changeGlobalStyle("margin", value);
+            }}
+          >
+            {fonts.map((item: string, index: number) => {
+              return (
+                <Option value={item} key={index}>
+                  {item}
+                </Option>
+              );
+            })}
+          </Select>
+        </div>
+        <div className="w-full flex">
+          <div>模块标题字体大小</div>
+          <Select
+            defaultValue="10px"
             style={{ width: 120 }}
             onChange={(value) => {
               props.changeGlobalStyle("title", value);

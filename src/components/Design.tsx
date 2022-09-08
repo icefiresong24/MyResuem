@@ -9,6 +9,8 @@ import downloadPDF from "../util/html2pdf";
 import Setting from "./setting/Setting";
 import "./desing.scss";
 function Design(props: any) {
+  let [page, setPage] = useState(1);
+
   useEffect(() => {
     //ResizeObserver监听简历内容高度变化，改变简历对应生成PDF高度
     const dom = document.getElementById("pdf");
@@ -16,12 +18,14 @@ function Design(props: any) {
       entries.forEach((item) => {
         let height = item.contentRect.height;
         console.log(height);
+        setPage(Math.ceil(height / 841));
 
         dom!.style.height = Math.ceil(height / 841) * 841 + "px";
       })
     );
     observer.observe(dom!);
   });
+  //点击改变当前设置模块名称
   let [select, setSelect] = useState<string>("");
   //跳转GitHub
   function goGithub() {
@@ -44,7 +48,7 @@ function Design(props: any) {
           <Module></Module>
         </section>
         <section className="bg-gray-400 h-full overflow-auto <sm:w-full <lg:w-149 ">
-          <Resuem current={select} onSelect={setSelect}></Resuem>
+          <Resuem page={page} current={select} onSelect={setSelect}></Resuem>
         </section>
         <section className="w-140  <lg:hidden">
           <Setting current={select} onSelect={setSelect} />

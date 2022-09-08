@@ -40,9 +40,9 @@ function Resuem(props: any) {
   
   
   return (
-    <>
+    <div className="relative">
       <div
-        className="w-150   text-dark-400  px-10 bg-light-100"
+        className="w-148.5   text-dark-400  px-10 bg-light-100"
         id="pdf"
       >
         {props.value.map((item: any, index: number) => {
@@ -58,6 +58,7 @@ function Resuem(props: any) {
                     ? " border border-green-400 border-dashed"
                     : ""
                 }
+                style={{marginTop:props.global.margin}}
               >
                 <Element
                   name={item.component}
@@ -72,7 +73,10 @@ function Resuem(props: any) {
           }
         })}
       </div>
-    </>
+        {new Array(props.page).fill(' ').map((item:any,index:number) => {
+          return <div key={index} style={{ top: (index + 1) * 841 }} className=" absolute w-full h-5 bg-gray-400 ">第{index+1 }页</div>
+        })}
+    </div>
   );
 }
 

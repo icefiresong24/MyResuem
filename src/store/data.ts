@@ -179,7 +179,8 @@ const data: Data = {
   global: {
     theme: 'black',
     text:'14px',
-    title:'18px'
+    title: '18px',
+    margin:'10px'
   }
 };
 
