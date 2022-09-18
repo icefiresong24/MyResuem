@@ -11,7 +11,7 @@ https://icefiresong24.github.io/
 
 **图片：**
 
-![image](https://user-images.githubusercontent.com/67216778/187828624-9f073936-d718-4549-b742-82b1d1059f96.png)
+![image](https://user-images.githubusercontent.com/67216778/190917085-eb090a64-b134-4026-bb46-79ff4bd26018.png)
 
 ## 功能介绍
 
