@@ -26,7 +26,7 @@ function Common(props: any) {
     'green'
   ]
   return (
-      <div className="w-full h-12 bg-light-100 flex justify-center items-center">
+      <div className="w-full rounded-md mb-2  h-12 bg-light-100 flex justify-center items-center">
         <div className="w-full ">
           <Select
             defaultValue="black"

@@ -4,7 +4,6 @@ import { Modules } from "../../types/type";
 const { TextArea } = Input;
 
 import moment from "moment";
-import { text2textarea } from "@/util/saveTextarea";
 import { LeftOutlined } from "@ant-design/icons";
 import { Fragment } from "react";
 const dateFormat = "YYYY/MM/DD";

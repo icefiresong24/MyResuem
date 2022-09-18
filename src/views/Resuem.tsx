@@ -40,32 +40,20 @@ function Resuem(props: any) {
   
   
   return (
-    <div className="relative">
-      <div
-        className="w-148.5 mt-2    text-dark-400  px-10 bg-light-100"
-        id="pdf"
-      >
+    <div className="relative ">
+      <div className="w-148.5     text-dark-400  px-10 bg-light-100" id="pdf">
         {props.value.map((item: any, index: number) => {
           if (item.show) {
             return (
               <div
                 onClick={() => {
-                  props.onSelect(item.component);
+                  props.onSelect(item.component,index);
                 }}
                 key={index}
-                className={
-                  props.current == item.component
-                    ? " border border-green-400 border-dashed"
-                    : ""
-                }
-                style={{marginBottom:props.global.margin}}
+                className={props.current == item.component ? " border border-green-400 border-dashed" : ""}
+                style={{ marginBottom: props.global.margin }}
               >
-                <Element
-                  name={item.component}
-                  info={item.info}
-                  style={item.style}
-                  global={props.global}
-                />
+                <Element name={item.component} info={item.info} style={item.style} global={props.global} />
               </div>
             );
           } else {
@@ -73,9 +61,13 @@ function Resuem(props: any) {
           }
         })}
       </div>
-        {new Array(props.page).fill(' ').map((item:any,index:number) => {
-          return <div key={index} style={{ top: (index + 1) * 841 }} className=" absolute w-full h-5 bg-gray-400 ">第{index+1 }页</div>
-        })}
+      {new Array(props.page).fill(" ").map((item: any, index: number) => {
+        return (
+          <div key={index} style={{ top: (index + 1) * 841 }} className=" absolute w-full h-5 bg-gray-400 ">
+            第{index + 1}页
+          </div>
+        );
+      })}
     </div>
   );
 }

@@ -22,12 +22,7 @@ function MyEditor(props: Prop) {
 
   // 工具栏配置
   const toolbarConfig: Partial<IToolbarConfig> = {}; // TS 语法
-  toolbarConfig.excludeKeys = [
-    "headerSelect",
-    "blockquote",
-    "italic",
-    "group-more-style", // 排除菜单组，写菜单组 key 的值即可
-  ];
+  toolbarConfig.excludeKeys = ["headerSelect", "fullScreen", "emotion", "insertLink", "insertTable", "group-image", "group-video", "codeBlock", "divider", "blockquote", "italic", "group-more-style"];
   // const toolbarConfig = { }                        // JS 语法
 
   // 编辑器配置
@@ -45,21 +40,18 @@ function MyEditor(props: Prop) {
       setEditor(null);
     };
   }, [editor]);
+
   //改变内容时触发
   function handleChangle(value: string) {
-    //   const toolbar = DomEditor.getToolbar(editor!);
-
-    //   const curToolbarConfig = toolbar!.getConfig();
-    //   console.log(curToolbarConfig.toolbarKeys); // 当前菜单排序和分组
-
     setHtml(value);
     props.onChange(value);
   }
+
   return (
     <>
       <div style={{ border: "1px solid #ccc", zIndex: 100 }}>
         <Toolbar editor={editor} defaultConfig={toolbarConfig} mode="default" style={{ borderBottom: "1px solid #ccc" }} />
-        <Editor defaultConfig={editorConfig} value={html} onCreated={setEditor} onChange={(editor) => handleChangle(editor.getHtml())} mode="default" style={{ height: "500px", overflowY: "hidden" }} />
+        <Editor defaultConfig={editorConfig} value={html} onCreated={setEditor} onChange={(editor) => handleChangle(editor.getHtml())} mode="default" style={{ height: "300px", overflowY: "hidden" }} />
       </div>
     </>
   );

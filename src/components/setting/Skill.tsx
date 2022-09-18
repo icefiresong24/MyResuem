@@ -3,16 +3,30 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import MyEditor from "../myEditor";
 import { Modules } from "../../types/type";
+import ModelSetting from "@/hooks/ModelSetting";
 function Skill(props: any) {
-  const { style } = props.value.find((item: any) => {
+  const { style, name } = props.value.find((item: any) => {
     return item.component == "Skill";
   });
+
   let [info, setInfo] = useState(style.info);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   function handleChange(value: string) {
     props.changeStyle("Skill", "info", value);
   }
   return (
     <Fragment>
+      <ModelSetting
+        handleOk={(newTitle: string) => {
+          props.changeName("Skill", newTitle);
+          setIsModalOpen(false);
+        }}
+        title="模块名称"
+        visible={isModalOpen}
+        handleCancel={() => {
+          setIsModalOpen(false);
+        }}
+      ></ModelSetting>
       <div className="w-full p-4 ">
         <div className="w-full h-5 mb-4  flex justify-between">
           <div
@@ -22,9 +36,14 @@ function Skill(props: any) {
           >
             <LeftOutlined />
             <span className="cursor-pointer">返回</span>
-            
           </div>
-          <div>专业技能</div>
+          <div
+            onClick={() => {
+              setIsModalOpen(true);
+            }}
+          >
+            {name}
+          </div>
           <button>保存</button>
         </div>
         <div className="w-full">
@@ -47,6 +66,14 @@ const mapDispatchToProps = (dispatch: any) => ({
       payload: {
         module,
         property,
+        value,
+      },
+    }),
+  changeName: (module: string, value: any) =>
+    dispatch({
+      type: "NAME",
+      payload: {
+        module,
         value,
       },
     }),

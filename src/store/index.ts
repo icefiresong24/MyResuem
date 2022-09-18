@@ -4,7 +4,7 @@ import data from "./data";
 import { Modules } from "../types/type";
 import { json } from "node:stream/consumers";
 type Action = {
-  type: "MOVE" | "SHOW" | "STYLE" | "GLOBAL";
+  type: "MOVE" | "SHOW" | "STYLE" | "GLOBAL"|"NAME";
   payload: any;
 };
 const reducer = (state = data, action: Action) => {
@@ -35,6 +35,21 @@ const reducer = (state = data, action: Action) => {
       if (index > -1) {
         let result = JSON.parse(JSON.stringify(state));
         result.value[index].show = action.payload.checked;
+       
+
+        return result;
+      }
+    case "NAME":
+      console.log(22);
+      
+      let index3 = state.value.findIndex((item: any) => {
+        return item.component == action.payload.module;
+      });
+       
+      if (index3 > -1) {
+        let result = JSON.parse(JSON.stringify(state));
+        result.value[index3].name = action.payload.value;
+       console.log(result.value[index3]);
        
 
         return result;

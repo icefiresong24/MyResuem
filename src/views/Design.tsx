@@ -23,8 +23,10 @@ function Design(props: any) {
   });
   //点击改变当前设置模块名称
   let [select, setSelect] = useState<string>("");
-  
-  
+  const [selectModulesIndex, setSelectModulesIndex] = useState<number|null>(null);
+  function handleSelect(component:string,index?:number) {
+    setSelect(component)
+  }
   return (
     <>
       <Header></Header>
@@ -33,11 +35,13 @@ function Design(props: any) {
           <Module></Module>
         </section>
         <section className={["w-140", "<lg:hidden", "mt-5", "mr-5", " rounded-xl", select ? "" : "hidden"].join(" ")}>
-          <Setting current={select} onSelect={setSelect} />
+          <Setting current={select} onSelect={setSelect} setSelectModulesIndex={setSelectModulesIndex} />
         </section>
-        <section className=" h-full overflow-auto mt-5 <sm:w-full <lg:w-149 content">
+        <section className=" [calc(100%-2.5rem)]  mt-5 <sm:w-full <lg:w-149 content">
           <Common></Common>
-          <Resuem page={page} current={select} onSelect={setSelect}></Resuem>
+          <div className="overflow-auto h-[calc(100%-3.5rem)]">
+            <Resuem page={page} current={select} onSelect={handleSelect}></Resuem>
+          </div>
         </section>
       </div>
     </>

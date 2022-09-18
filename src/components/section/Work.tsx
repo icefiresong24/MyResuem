@@ -1,6 +1,8 @@
-import { text2textarea } from "@/util/saveTextarea";
 
-function Work({style,global}:any) {
+function Work({ style, global }: any) {
+  function editWork(index: number) {
+
+  }
     return (
       <div className="w-full  ">
         <div className="font-bold " style={{ fontSize: global.title }}>
@@ -14,7 +16,9 @@ function Work({style,global}:any) {
           <div className="w-1/4 h-full bg-blue-400 absolute"></div>
         </div>
         {style.info.map((item: any, index: number) => (
-          <div key={index} style={{ fontSize: global.text }}>
+          <div key={index} style={{ fontSize: global.text }} onClick={() => {
+              editWork(index)
+          }}>
             <div className="flex justify-between">
               <span className="font-bold">
                 {item.startTime}-{item.endTime}
