@@ -3,7 +3,7 @@ import { Switch } from "antd";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { Modules } from "./type";
+import { Modules } from "../types/type";
 interface Props {
   value: any;
   updateShow:any
@@ -22,7 +22,7 @@ const SortableItem = SortableElement<Element>((props: Props) => {
   };
   return (
     <li className="list-none flex justify-between h-8 border-dark-50">
-      <div>{props.value.name}</div>
+      <div className="cursor-move">{props.value.name}</div>
       <Switch defaultChecked onChange={onChange(props.value)} />
     </li>
   );
@@ -30,6 +30,10 @@ const SortableItem = SortableElement<Element>((props: Props) => {
 
 const SortableList = SortableContainer<any>(({ items, updateShow }: any) => {
   return (
+    <>
+    <div className="h-10 ">
+              模块选择<span className="text-xs">(拖动模块控制模块位置)</span>
+          </div>
     <ul>
       {items.map((value: any, index: number) => (
         <SortableItem
@@ -39,7 +43,8 @@ const SortableList = SortableContainer<any>(({ items, updateShow }: any) => {
           updateShow={updateShow}
         />
       ))}
-    </ul>
+      </ul>
+      </>
   );
 });
 

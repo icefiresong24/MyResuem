@@ -1,12 +1,12 @@
-import Common from "./Common";
-import Apply from "./Apply";
-import Skill from "./Skill";
-import Work from "./Work";
-import Education from "./Education";
-import Basic from "./Basic";
-import Internship from "./Internship";
-import School from "./School";
-import Info from "./Info";
+import Common from "../components/setting/Common";
+import Apply from "../components/setting/Apply";
+import Skill from "../components/setting/Skill";
+import Work from "../components/setting/Work";
+import Education from "../components/setting/Education";
+import Basic from "../components/setting/Basic";
+import Internship from "../components/setting/Internship";
+import School from "../components/setting/School";
+import Info from "../components/setting/Info";
 import { useEffect } from "react";
 function Setting(props: any) {
   useEffect(() => {});

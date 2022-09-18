@@ -2,7 +2,7 @@ import { LeftOutlined } from "@ant-design/icons";
 import { Input, Button } from "antd";
 import { Fragment } from "react";
 import { connect } from "react-redux";
-import { Modules } from "../type";
+import { Modules } from "../../types/type";
 const { TextArea } = Input;
 function School(props: any) {
   const { style } = props.value.find((item: any) => {

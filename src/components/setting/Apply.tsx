@@ -2,7 +2,7 @@ import { LeftOutlined } from "@ant-design/icons";
 import { Input,Button } from "antd";
 import { Fragment, useEffect, useRef, useState } from "react";
 import {connect} from 'react-redux'
-import { Modules } from "../type";
+import { Modules } from "../../types/type";
 
 
 function Apply(props: any) {

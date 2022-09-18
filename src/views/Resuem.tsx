@@ -1,12 +1,12 @@
-import Apply from "./Apply";
-import Skill from "./Skill";
-import Work from "./Work";
-import Education from "./Education";
-import Basic from "./Basic";
-import Internship from "./Internship";
-import School from "./School";
-import Info from "./Info";
-import { Modules } from "../type";
+import Apply from "../components/section/Apply";
+import Skill from "../components/section/Skill";
+import Work from "../components/section/Work";
+import Education from "../components/section/Education";
+import Basic from "../components/section/Basic";
+import Internship from "../components/section/Internship";
+import School from "../components/section/School";
+import Info from "../components/section/Info";
+import { Modules } from "../types/type";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { setInterval } from "node:timers/promises";
@@ -42,7 +42,7 @@ function Resuem(props: any) {
   return (
     <div className="relative">
       <div
-        className="w-148.5   text-dark-400  px-10 bg-light-100"
+        className="w-148.5 mt-2    text-dark-400  px-10 bg-light-100"
         id="pdf"
       >
         {props.value.map((item: any, index: number) => {
@@ -58,7 +58,7 @@ function Resuem(props: any) {
                     ? " border border-green-400 border-dashed"
                     : ""
                 }
-                style={{marginTop:props.global.margin}}
+                style={{marginBottom:props.global.margin}}
               >
                 <Element
                   name={item.component}

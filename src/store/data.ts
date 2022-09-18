@@ -62,9 +62,7 @@ const data: Data = {
       component: "Education",
       show: true,
       style: {
-        info: [
-          { name: "野鸡学城", profession: "计算机科学与技术", degree: "本科" },
-        ],
+        info: [{ name: "野鸡学城", profession: "计算机科学与技术", degree: "本科" }],
         title: {
           color: "black",
           fontSize: "24px",
@@ -80,13 +78,7 @@ const data: Data = {
       component: "Skill",
       show: true,
       style: {
-        info: [
-          "熟练掌握 Vue2、3 及周边生态开发应用程序。结合 HTML5、CSS3 编写高质量、符合语义化的代码",
-          "熟练掌握Element UI、Ant Design、Echarts 等 UI 库，实现快速构建网页；",
-          "熟练使用 TypeScript,React,ECMAScript6 语法，实际运用；",
-          "熟练使用 Webpack、Vite、Babel 项目打包工具，Git 版本控制工具，实现多人协同开发。",
-          "熟悉 HTTP 协议、Linux 系统常用操作，node。",
-        ],
+        info: "<p>熟练使用Vue2、3及周边生态开发应用程序。结合HTML5、CSS3编写高质量、符合语义化的代码；</p><p>熟练使用 Element UI、Ant Design of Vue、Echarts等UI库，实现快速构建网页；</p><p>熟悉使用TypeScript，熟悉ECMAScript6语法，在项目中实际运用；</p><p>熟悉Webpack、Babel等项目打包工具，Git版本控制工具，实现多人协同开发。</p><p>了解 WebGIS，熟悉 Cesium 地图引擎及高德地图百度地图等地图 API；</p><p>了解HTTP协议、Linux系统常用操作，express框架。</p>",
         title: {
           color: "black",
           fontSize: "24px",
@@ -177,11 +169,11 @@ const data: Data = {
     },
   ],
   global: {
-    theme: 'black',
-    text:'14px',
-    title: '18px',
-    margin:'10px'
-  }
+    theme: "black",
+    text: "14px",
+    title: "18px",
+    margin: "10px",
+  },
 };
 
 export default data;

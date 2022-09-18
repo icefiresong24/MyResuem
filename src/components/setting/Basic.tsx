@@ -1,6 +1,6 @@
 import { Select,Input,Button } from "antd";
 import { Fragment, useState } from 'react'
-import { Modules } from "../type";
+import { Modules } from "../../types/type";
 import { connect } from "react-redux";
 import { LeftOutlined } from "@ant-design/icons";
 function Basic(props: any) {

@@ -1,7 +1,7 @@
 import { arrayMoveImmutable } from "array-move";
 import { createStore } from "redux";
 import data from "./data";
-import { Modules } from "../components/type";
+import { Modules } from "../types/type";
 import { json } from "node:stream/consumers";
 type Action = {
   type: "MOVE" | "SHOW" | "STYLE" | "GLOBAL";

@@ -1,6 +1,6 @@
 import { Input, Button, DatePicker, Space } from "antd";
 import { connect } from "react-redux";
-import { Modules } from "../type";
+import { Modules } from "../../types/type";
 const { TextArea } = Input;
 
 import moment from "moment";
