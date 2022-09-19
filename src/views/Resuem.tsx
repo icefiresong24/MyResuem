@@ -11,29 +11,24 @@ import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { setInterval } from "node:timers/promises";
 
-const Element: any = function switchComponent({
-  name,
-  info,
-  style,
-  global,
-}: any) {
+const Element: any = function switchComponent({ name, info, style, global, onSelect }: any) {
   switch (name) {
     case "Basic":
-      return <Basic info={info} style={style} global={global} />;
+      return <Basic info={info} style={style} global={global} onSelect={onSelect} />;
     case "Apply":
-      return <Apply info={info} style={style} global={global} />;
+      return <Apply info={info} style={style} global={global} onSelect={onSelect} />;
     case "Work":
-      return <Work info={info} style={style} global={global} />;
+      return <Work info={info} style={style} global={global} onSelect={onSelect} />;
     case "Education":
-      return <Education info={info} style={style} global={global} />;
+      return <Education info={info} style={style} global={global} onSelect={onSelect} />;
     case "Internship":
-      return <Internship info={info} style={style} global={global} />;
+      return <Internship info={info} style={style} global={global} onSelect={onSelect} />;
     case "School":
-      return <School info={info} style={style} global={global} />;
+      return <School info={info} style={style} global={global} onSelect={onSelect} />;
     case "Info":
-      return <Info info={info} style={style} global={global} />;
+      return <Info info={info} style={style} global={global} onSelect={onSelect} />;
     case "Skill":
-      return <Skill info={info} style={style} global={global} />;
+      return <Skill info={info} style={style} global={global} onSelect={onSelect} />;
   }
 };
 function Resuem(props: any) {
@@ -46,14 +41,14 @@ function Resuem(props: any) {
           if (item.show) {
             return (
               <div
-                onClick={() => {
-                  props.onSelect(item.component,index);
-                }}
+                // onClick={() => {
+                //   props.onSelect(item.component,index);
+                // }}
                 key={index}
                 className={props.current == item.component ? " border border-green-400 border-dashed" : ""}
                 style={{ marginBottom: props.global.margin }}
               >
-                <Element name={item.component} info={item.info} style={item.style} global={props.global} />
+                <Element onSelect={props.onSelect} name={item.component} info={item.info} style={item.style} global={props.global} />
               </div>
             );
           } else {

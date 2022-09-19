@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Switch } from "antd";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
-import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Modules } from "../types/type";
 interface Props {
@@ -16,7 +15,6 @@ const SortableItem = SortableElement<Element>((props: Props) => {
   const onChange = (item: any) => {
     return (checked: any) => {
       props.updateShow(item, checked);
-      console.log("niaho");
     };
   };
   return (
@@ -29,16 +27,11 @@ const SortableItem = SortableElement<Element>((props: Props) => {
 
 const SortableList = SortableContainer<any>(({ items, updateShow }: any) => {
   return (
-    <>
-      <div className="h-10 ">
-        模块选择<span className="text-xs">(拖动模块控制模块位置)</span>
-      </div>
-      <ul>
-        {items.map((value: any, index: number) => (
-          <SortableItem key={`item-${index}`} index={index} value={value} updateShow={updateShow} />
-        ))}
-      </ul>
-    </>
+    <ul>
+      {items.map((value: any, index: number) => (
+        <SortableItem key={`item-${index}`} index={index} value={value} updateShow={updateShow} />
+      ))}
+    </ul>
   );
 });
 
@@ -56,7 +49,14 @@ class Module extends Component<any, any> {
     this.props.moveArray(oldIndex, newIndex);
   };
   render() {
-    return <SortableList items={this.props.value} onSortEnd={this.onSortEnd} updateShow={this.props.updateArray} />;
+    return (
+      <>
+        <div className="h-10 ">
+          模块选择<span className="text-xs">(拖动模块控制模块位置)</span>
+        </div>
+        <SortableList items={this.props.value} onSortEnd={this.onSortEnd} updateShow={this.props.updateArray} />;
+      </>
+    );
   }
 }
 const mapStateToProps = (state: Modules) => {

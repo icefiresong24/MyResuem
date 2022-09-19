@@ -6,132 +6,118 @@ const { TextArea } = Input;
 import moment from "moment";
 import { LeftOutlined } from "@ant-design/icons";
 import { Fragment } from "react";
+import ModelSetting from "@/hooks/ModelSetting";
+import MyEditor from "../myEditor";
 const dateFormat = "YYYY/MM/DD";
 const { RangePicker } = DatePicker;
 function Work(props: any) {
-  const { style } = props.value.find((item: any) => {
+  const { style, name } = props.value.find((item: any) => {
     return item.component == "Work";
   });
-  let [info, setInfo] = useState(style.info);
-  function handledate(index: number, dateStrings: [string, string]) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  let [info, setInfo] = useState<Nobject>({});
+  useEffect(() => {
+    console.log(22);
+    
+    setInfo(style.info[props.selectModulesIndex]);
+  }, []);
+  function handledate(dateStrings: [string, string]) {
     let [startTime, endTime] = dateStrings;
-    setInfo((pre: any) => {
-      let info = JSON.parse(JSON.stringify(pre));
-      info[index].startTime = startTime;
-      info[index].endTime = endTime;
-      return info;
-    });
+    handleChange(startTime, "startTime");
+    handleChange(endTime, "endTime");
   }
-  function handleChange(value: any, name: string, index: number) {
-    setInfo((pre: any) => {
-      let info = JSON.parse(JSON.stringify(pre));
-      info[index][name] = value;
-      return info;
-    });
+  //BUG SETINFO
+  function handleChange(value: string, property: string) {
+    let res = { ...info };
+    res[property] = value;
+
+    setInfo(res);
+
+    let res2 = JSON.parse(JSON.stringify(style.info));
+    res2[props.selectModulesIndex][property] = value;
+
+    props.changeStyle("Work", "info", res2);
   }
   return (
     <Fragment>
-      <LeftOutlined />
-      <span
-        className="cursor-pointer"
-        onClick={() => {
-          props.onSelect("");
-        }}
-      >
-        返回
-      </span>
       <div className="w-full p-4">
-        <div className="w-full h-5 flex-center">项目经验</div>
-        <div className="w-full">
-          {info.map((item: any, index: number) => {
-            return (
-              <div className="mt4" key={index}>
-                <div className="flex justify-between">
-                  <div>项目{index + 1}</div>
-                  <Button
-                    type="primary"
-                    shape="round"
-                    onClick={() => {
-                      setInfo((pre: unknown[]) => {
-                        let info = JSON.parse(JSON.stringify(pre));
-                        info.splice(index, 1);
-                        return info;
-                      });
-                    }}
-                  >
-                    删除
-                  </Button>
-                </div>
-                <div>时间</div>
-                <Space direction="vertical" size={12}>
-                  <RangePicker
-                    defaultValue={[
-                      moment(item.startTime, dateFormat),
-                      moment(item.endTime, dateFormat),
-                    ]}
-                    format={dateFormat}
-                    onChange={(_, dateStrings: [string, string]) => {
-                      handledate(index, dateStrings);
-                    }}
-                  />
-                </Space>
-                <div>项目名称</div>
-                <Input
-                  value={item.projectName}
-                  onChange={(e) => {
-                    handleChange(e.target.value, e.target.name, index);
-                  }}
-                  name="projectName"
-                />
-                <div>负责内容</div>
-                <Input
-                  value={item.role}
-                  onChange={(e) => {
-                    handleChange(e.target.value, e.target.name, index);
-                  }}
-                  name="role"
-                />
-                <div>项目描述</div>
-                <TextArea
-                  rows={4}
-                  value={item.description}
-                  onChange={(e) =>
-                    handleChange(e.target.value, "description", index)
-                  }
-                />
-              </div>
-            );
-          })}
+        <ModelSetting
+          handleOk={(newTitle: string) => {
+            props.changeName("Work", newTitle);
+            setIsModalOpen(false);
+          }}
+          title="模块名称"
+          visible={isModalOpen}
+          handleCancel={() => {
+            setIsModalOpen(false);
+          }}
+        ></ModelSetting>
+        <div className="w-full h-5 mb-4  flex justify-between">
+          <div
+            onClick={() => {
+              props.onSelect("");
+            }}
+          >
+            <LeftOutlined />
+            <span className="cursor-pointer">返回</span>
+          </div>
+          <div
+            onClick={() => {
+              setIsModalOpen(true);
+            }}
+          >
+            {name}
+          </div>
+          <button>保存</button>
         </div>
-        <Button
-          type="primary"
-          shape="round"
-          className="mt-4"
-          onClick={() => {
-            setInfo([
-              ...info,
-              {
-                startTime: "2022-1-1",
-                endTime: "2022-1-1",
-                company: "****公司",
-                role: "前端负责人",
-                duty: "负责项目的核心模块前端设计和研发工作；",
-              },
-            ]);
-          }}
-        >
-          添加
-        </Button>
-        <Button
-          type="primary"
-          shape="round"
-          className="mt-4"
-          onClick={() => {
-            props.changeStyle("Work", "info", info);
-          }}
-        >
-          保存
-        </Button>
+        <div className="w-full">
+          <div className="mt4">
+            <div>项目名称</div>
+            <Input
+              value={info.projectName}
+              onChange={(e) => {
+                handleChange(e.target.value, "projectName");
+              }}
+              name="projectName"
+            />
+            <div>时间</div>
+            <Space direction="vertical" size={12}>
+              <RangePicker
+                defaultValue={[moment(info.startTime, dateFormat), moment(info.endTime, dateFormat)]}
+                format={dateFormat}
+                onChange={(_, dateStrings: [string, string]) => {
+                  handledate(dateStrings);
+                }}
+              />
+            </Space>
+
+            <div>经历描述</div>
+            <div className="w-full">
+              <MyEditor
+                content={info.description}
+                onChange={(val: string) => {
+                  handleChange(val, "description");
+                }}
+              ></MyEditor>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-between">
+          <Button
+            type="primary"
+            shape="round"
+            onClick={() => {
+              // setInfo((pre: unknown[]) => {
+              //   let info = JSON.parse(JSON.stringify(pre));
+              //   info.splice(index, 1);
+              //   return info;
+              // });
+            }}
+          >
+            删除
+          </Button>
+        </div>
       </div>
     </Fragment>
   );

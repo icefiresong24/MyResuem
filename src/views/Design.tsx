@@ -23,8 +23,11 @@ function Design(props: any) {
   });
   //点击改变当前设置模块名称
   let [select, setSelect] = useState<string>("");
-  const [selectModulesIndex, setSelectModulesIndex] = useState<number|null>(null);
-  function handleSelect(component:string,index?:number) {
+  //如果选中工作模块等要循环遍历，设置选中内容index
+  const [selectModulesIndex, setSelectModulesIndex] = useState<number|undefined>(undefined);
+  function handleSelect(component: string, index?: number) {
+    console.log(component,index);
+    setSelectModulesIndex(index)
     setSelect(component)
   }
   return (
@@ -35,7 +38,7 @@ function Design(props: any) {
           <Module></Module>
         </section>
         <section className={["w-140", "<lg:hidden", "mt-5", "mr-5", " rounded-xl", select ? "" : "hidden"].join(" ")}>
-          <Setting current={select} onSelect={setSelect} setSelectModulesIndex={setSelectModulesIndex} />
+          <Setting current={select} onSelect={setSelect} selectModulesIndex={selectModulesIndex} />
         </section>
         <section className=" [calc(100%-2.5rem)]  mt-5 <sm:w-full <lg:w-149 content">
           <Common></Common>

@@ -16,18 +16,18 @@ function Skill(props: any) {
   }
   return (
     <Fragment>
-      <ModelSetting
-        handleOk={(newTitle: string) => {
-          props.changeName("Skill", newTitle);
-          setIsModalOpen(false);
-        }}
-        title="模块名称"
-        visible={isModalOpen}
-        handleCancel={() => {
-          setIsModalOpen(false);
-        }}
-      ></ModelSetting>
       <div className="w-full p-4 ">
+        <ModelSetting
+          handleOk={(newTitle: string) => {
+            props.changeName("Skill", newTitle);
+            setIsModalOpen(false);
+          }}
+          title="模块名称"
+          visible={isModalOpen}
+          handleCancel={() => {
+            setIsModalOpen(false);
+          }}
+        ></ModelSetting>
         <div className="w-full h-5 mb-4  flex justify-between">
           <div
             onClick={() => {
