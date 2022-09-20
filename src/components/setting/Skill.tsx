@@ -1,4 +1,4 @@
-import { DeleteOutlined, LeftOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined, LeftOutlined } from "@ant-design/icons";
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import MyEditor from "../myEditor";
@@ -22,7 +22,7 @@ function Skill(props: any) {
             props.changeName("Skill", newTitle);
             setIsModalOpen(false);
           }}
-          title="模块名称"
+          title={name}
           visible={isModalOpen}
           handleCancel={() => {
             setIsModalOpen(false);
@@ -43,8 +43,9 @@ function Skill(props: any) {
             }}
           >
             {name}
+            <EditOutlined />
           </div>
-          <button>保存</button>
+          <div>&nbsp;</div>
         </div>
         <div className="w-full">
           <MyEditor content={info} onChange={handleChange}></MyEditor>

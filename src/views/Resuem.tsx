@@ -11,24 +11,24 @@ import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { setInterval } from "node:timers/promises";
 
-const Element: any = function switchComponent({ name, info, style, global, onSelect }: any) {
+const Element: any = function switchComponent({ name, info, style, global, onSelect ,data}: any) {
   switch (name) {
     case "Basic":
-      return <Basic info={info} style={style} global={global} onSelect={onSelect} />;
+      return <Basic info={info} style={style} global={global} data={data} onSelect={onSelect} />;
     case "Apply":
-      return <Apply info={info} style={style} global={global} onSelect={onSelect} />;
+      return <Apply info={info} style={style} global={global} data={data} onSelect={onSelect} />;
     case "Work":
-      return <Work info={info} style={style} global={global} onSelect={onSelect} />;
+      return <Work info={info} style={style} global={global} data={data} onSelect={onSelect} />;
     case "Education":
-      return <Education info={info} style={style} global={global} onSelect={onSelect} />;
+      return <Education info={info} style={style} global={global} data={data} onSelect={onSelect} />;
     case "Internship":
-      return <Internship info={info} style={style} global={global} onSelect={onSelect} />;
+      return <Internship info={info} style={style} global={global} data={data} onSelect={onSelect} />;
     case "School":
-      return <School info={info} style={style} global={global} onSelect={onSelect} />;
+      return <School info={info} style={style} global={global} data={data} onSelect={onSelect} />;
     case "Info":
-      return <Info info={info} style={style} global={global} onSelect={onSelect} />;
+      return <Info info={info} style={style} global={global} data={data} onSelect={onSelect} />;
     case "Skill":
-      return <Skill info={info} style={style} global={global} onSelect={onSelect} />;
+      return <Skill info={info} style={style} global={global} data={data} onSelect={onSelect} />;
   }
 };
 function Resuem(props: any) {
@@ -48,7 +48,7 @@ function Resuem(props: any) {
                 className={props.current == item.component ? " border border-green-400 border-dashed" : ""}
                 style={{ marginBottom: props.global.margin }}
               >
-                <Element onSelect={props.onSelect} name={item.component} info={item.info} style={item.style} global={props.global} />
+                <Element onSelect={props.onSelect} name={item.component} info={item.info} style={item.style} global={props.global} data={item}  />
               </div>
             );
           } else {

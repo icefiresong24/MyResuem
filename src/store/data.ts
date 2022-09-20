@@ -62,7 +62,7 @@ const data: Data = {
       component: "Education",
       show: true,
       style: {
-        info: [{ name: "野鸡学城", profession: "计算机科学与技术", degree: "本科" }],
+        info: [{ name: "野鸡学城", profession: "计算机科学与技术", degree: "本科", startTime: "2022年1月", endTime: "2022年2月" }],
         title: {
           color: "black",
           fontSize: "24px",
@@ -94,7 +94,7 @@ const data: Data = {
       component: "School",
       show: true,
       style: {
-        info: ["国家奖学金", "全国一等奖"],
+        info: "<p>三好学生</p>",
         title: {
           color: "black",
           fontSize: "24px",
@@ -116,7 +116,7 @@ const data: Data = {
             endTime: "2022-1-1",
             company: "996神仙难活公司",
             role: "前端负责人",
-            duty: "负责项目的核心模块前端设计和研发工作；",
+            duty: "<p>负责项目的核心模块前端设计和研发工作</p>",
           },
         ],
         title: {

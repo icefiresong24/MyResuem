@@ -4,7 +4,7 @@ import { Modules } from "../../types/type";
 const { TextArea } = Input;
 
 import moment from "moment";
-import { LeftOutlined } from "@ant-design/icons";
+import { EditOutlined, LeftOutlined } from "@ant-design/icons";
 import { Fragment } from "react";
 import ModelSetting from "@/hooks/ModelSetting";
 import MyEditor from "../myEditor";
@@ -19,23 +19,25 @@ function Work(props: any) {
   let [info, setInfo] = useState(style.info[props.selectModulesIndex]);
   function handledate(dateStrings: [string, string]) {
     let [startTime, endTime] = dateStrings;
+    //bug:单独执行一句生效,一起执行只执行最后一个handlechange
     handleChange(startTime, "startTime");
     handleChange(endTime, "endTime");
   }
-  //BUG SETINFO
+  //redux改变数据
   function handleChange(value: string, property: string) {
     let res = { ...info };
     res[property] = value;
     let res2 =[...style.info];
     res2[props.selectModulesIndex] = res;
     props.changeStyle("Work", "info", res2);
+    
   }
   return (
     <Fragment>
       <div className="w-full p-4">
         <ModelSetting
           handleOk={(newTitle: string) => {
-            handleChange( newTitle,name);
+            props.changeName("Work",newTitle)
             setIsModalOpen(false);
           }}
           title={name}
@@ -58,9 +60,9 @@ function Work(props: any) {
               setIsModalOpen(true);
             }}
           >
-            {name}
+            <span>{name}</span>
+            <EditOutlined />
           </div>
-          <button>保存</button>
         </div>
         <div className="w-full">
           <div className="mt4">
@@ -68,7 +70,7 @@ function Work(props: any) {
             <Input
               value={projectName}
               onChange={(e) => {
-                setProjectName(e.target.value)
+                setProjectName(e.target.value);
                 handleChange(e.target.value, "projectName");
               }}
               name="projectName"
@@ -127,6 +129,14 @@ const mapDispatchToProps = (dispatch: any) => ({
       payload: {
         module,
         property,
+        value,
+      },
+    }),
+  changeName: (module: string, value: any) =>
+    dispatch({
+      type: "NAME",
+      payload: {
+        module,
         value,
       },
     }),
