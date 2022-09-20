@@ -15,13 +15,8 @@ function Work(props: any) {
     return item.component == "Work";
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  let [info, setInfo] = useState<Nobject>({});
-  useEffect(() => {
-    console.log(22);
-    
-    setInfo(style.info[props.selectModulesIndex]);
-  }, []);
+  const [projectName, setProjectName] = useState(style.info[props.selectModulesIndex].projectName);
+  let [info, setInfo] = useState(style.info[props.selectModulesIndex]);
   function handledate(dateStrings: [string, string]) {
     let [startTime, endTime] = dateStrings;
     handleChange(startTime, "startTime");
@@ -31,12 +26,8 @@ function Work(props: any) {
   function handleChange(value: string, property: string) {
     let res = { ...info };
     res[property] = value;
-
-    setInfo(res);
-
-    let res2 = JSON.parse(JSON.stringify(style.info));
-    res2[props.selectModulesIndex][property] = value;
-
+    let res2 =[...style.info];
+    res2[props.selectModulesIndex] = res;
     props.changeStyle("Work", "info", res2);
   }
   return (
@@ -44,10 +35,10 @@ function Work(props: any) {
       <div className="w-full p-4">
         <ModelSetting
           handleOk={(newTitle: string) => {
-            props.changeName("Work", newTitle);
+            handleChange( newTitle,name);
             setIsModalOpen(false);
           }}
-          title="模块名称"
+          title={name}
           visible={isModalOpen}
           handleCancel={() => {
             setIsModalOpen(false);
@@ -75,8 +66,9 @@ function Work(props: any) {
           <div className="mt4">
             <div>项目名称</div>
             <Input
-              value={info.projectName}
+              value={projectName}
               onChange={(e) => {
+                setProjectName(e.target.value)
                 handleChange(e.target.value, "projectName");
               }}
               name="projectName"

@@ -11,7 +11,7 @@ const ModelSetting: React.FC<Prop> = (props) => {
 
   return (
     <>
-      <Modal title={props.title} visible={props.visible} onOk={(e) => {
+      <Modal title='模块名称' visible={props.visible} onOk={(e) => {
       props.handleOk(value)
       }} onCancel={props.handleCancel}>
         <Input defaultValue={props.title}  onChange={(e) => {
