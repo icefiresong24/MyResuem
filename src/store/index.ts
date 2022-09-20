@@ -1,10 +1,10 @@
 import { arrayMoveImmutable } from "array-move";
 import { createStore } from "redux";
 import data from "./data";
-import { Modules } from "../components/type";
+import { Modules } from "../types/type";
 import { json } from "node:stream/consumers";
 type Action = {
-  type: "MOVE" | "SHOW" | "STYLE" | "GLOBAL";
+  type: "MOVE" | "SHOW" | "STYLE" | "GLOBAL"|"NAME";
   payload: any;
 };
 const reducer = (state = data, action: Action) => {
@@ -15,10 +15,13 @@ const reducer = (state = data, action: Action) => {
         action.payload.oldIndex,
         action.payload.newIndex
       );
-
-      return { value: result };
+      
+      
+      return { value: result,global:state.global };
     case "STYLE":
       let { module, property, value } = action.payload;
+      console.log('value',value);
+      
       let index2 = state.value.findIndex((item: any) => {
         return item.component == module;
       });
@@ -30,15 +33,32 @@ const reducer = (state = data, action: Action) => {
       let index = state.value.findIndex((item: any) => {
         return item.component == action.payload.module.component;
       });
-
+       
       if (index > -1) {
         let result = JSON.parse(JSON.stringify(state));
         result.value[index].show = action.payload.checked;
+       
+
+        return result;
+      }
+    case "NAME":
+      console.log(22);
+      
+      let index3 = state.value.findIndex((item: any) => {
+        return item.component == action.payload.module;
+      });
+       
+      if (index3 > -1) {
+        let result = JSON.parse(JSON.stringify(state));
+        result.value[index3].name = action.payload.value;
+       console.log(result.value[index3]);
+       
+
         return result;
       }
     case "GLOBAL":
       let { theme, color } = action.payload;
-      console.log(theme,color);
+      
       
       let result3 = JSON.parse(JSON.stringify(state));
       result3.global[theme] = color;

@@ -62,9 +62,7 @@ const data: Data = {
       component: "Education",
       show: true,
       style: {
-        info: [
-          { name: "野鸡学城", profession: "计算机科学与技术", degree: "本科" },
-        ],
+        info: [{ name: "野鸡学城", profession: "计算机科学与技术", degree: "本科", startTime: "2022年1月", endTime: "2022年2月" }],
         title: {
           color: "black",
           fontSize: "24px",
@@ -80,13 +78,7 @@ const data: Data = {
       component: "Skill",
       show: true,
       style: {
-        info: [
-          "熟练掌握 Vue2、3 及周边生态开发应用程序。结合 HTML5、CSS3 编写高质量、符合语义化的代码",
-          "熟练掌握Element UI、Ant Design、Echarts 等 UI 库，实现快速构建网页；",
-          "熟练使用 TypeScript,React,ECMAScript6 语法，实际运用；",
-          "熟练使用 Webpack、Vite、Babel 项目打包工具，Git 版本控制工具，实现多人协同开发。",
-          "熟悉 HTTP 协议、Linux 系统常用操作，node。",
-        ],
+        info: "<p>熟练使用Vue2、3及周边生态开发应用程序。结合HTML5、CSS3编写高质量、符合语义化的代码；</p><p>熟练使用 Element UI、Ant Design of Vue、Echarts等UI库，实现快速构建网页；</p><p>熟悉使用TypeScript，熟悉ECMAScript6语法，在项目中实际运用；</p><p>熟悉Webpack、Babel等项目打包工具，Git版本控制工具，实现多人协同开发。</p><p>了解 WebGIS，熟悉 Cesium 地图引擎及高德地图百度地图等地图 API；</p><p>了解HTTP协议、Linux系统常用操作，express框架。</p>",
         title: {
           color: "black",
           fontSize: "24px",
@@ -102,7 +94,7 @@ const data: Data = {
       component: "School",
       show: true,
       style: {
-        info: ["国家奖学金", "全国一等奖"],
+        info: "<p>三好学生</p>",
         title: {
           color: "black",
           fontSize: "24px",
@@ -124,7 +116,7 @@ const data: Data = {
             endTime: "2022-1-1",
             company: "996神仙难活公司",
             role: "前端负责人",
-            duty: "负责项目的核心模块前端设计和研发工作；",
+            duty: "<p>负责项目的核心模块前端设计和研发工作</p>",
           },
         ],
         title: {
@@ -148,21 +140,21 @@ const data: Data = {
             endTime: "2022-08-13",
             projectName: "上班摸鱼管理系统",
             role: "前端负责人",
-            description: "1、动态绑定全局样式变量，实现项目主题切换\n2、封装 execel 文件常用上传、下载、编辑、预览功能。\n3、实现自定义拖拽，复制，防抖，节流指令。\n4、使用动态路由实现按钮级别权限控制。",
+            description: "<p>熟练使用Vue2、3及周边生态开发应用程序。结合HTML5、CSS3编写高质量、符合语义化的代码；</p><p>熟练使用 Element UI、Ant Design of Vue、Echarts等UI库，实现快速构建网页；</p><p>熟悉使用TypeScript，熟悉ECMAScript6语法，在项目中实际运用；</p><p>熟悉Webpack、Babel等项目打包工具，Git版本控制工具，实现多人协同开发。</p><p>了解 WebGIS，熟悉 Cesium 地图引擎及高德地图百度地图等地图 API；</p><p>了解HTTP协议、Linux系统常用操作，express框架。</p>",
           },
           {
             startTime: "2022-08-13",
             endTime: "2022-08-13",
             projectName: "下班喝酒管理系统",
             role: "前端负责人",
-            description: "1、动态绑定全局样式变量，实现项目主题切换\n2、封装 execel 文件常用上传、下载、编辑、预览功能。\n3、实现自定义拖拽，复制，防抖，节流指令。\n4、使用动态路由实现按钮级别权限控制。",
+            description: "<p>熟练使用Vue2、3及周边生态开发应用程序。结合HTML5、CSS3编写高质量、符合语义化的代码；</p><p>熟练使用 Element UI、Ant Design of Vue、Echarts等UI库，实现快速构建网页；</p><p>熟悉使用TypeScript，熟悉ECMAScript6语法，在项目中实际运用；</p><p>熟悉Webpack、Babel等项目打包工具，Git版本控制工具，实现多人协同开发。</p><p>了解 WebGIS，熟悉 Cesium 地图引擎及高德地图百度地图等地图 API；</p><p>了解HTTP协议、Linux系统常用操作，express框架。</p>",
           },
           {
             startTime: "2022-08-13",
             endTime: "2022-08-13",
             projectName: "放假屏蔽管理系统",
             role: "前端负责人",
-            description: "1、动态绑定全局样式变量，实现项目主题切换\n2、封装 execel 文件常用上传、下载、编辑、预览功能。\n3、实现自定义拖拽，复制，防抖，节流指令。\n4、使用动态路由实现按钮级别权限控制。",
+            description: "<p>熟练使用Vue2、3及周边生态开发应用程序。结合HTML5、CSS3编写高质量、符合语义化的代码；</p><p>熟练使用 Element UI、Ant Design of Vue、Echarts等UI库，实现快速构建网页；</p><p>熟悉使用TypeScript，熟悉ECMAScript6语法，在项目中实际运用；</p><p>熟悉Webpack、Babel等项目打包工具，Git版本控制工具，实现多人协同开发。</p><p>了解 WebGIS，熟悉 Cesium 地图引擎及高德地图百度地图等地图 API；</p><p>了解HTTP协议、Linux系统常用操作，express框架。</p>",
           },
         ],
         title: {
@@ -177,10 +169,11 @@ const data: Data = {
     },
   ],
   global: {
-    theme: 'black',
-    text:'14px',
-    title:'18px'
-  }
+    theme: "black",
+    text: "14px",
+    title: "18px",
+    margin: "10px",
+  },
 };
 
 export default data;

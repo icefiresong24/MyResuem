@@ -1,18 +1,13 @@
 import downloadPDF from "@/util/html2pdf";
 import { Button, Select } from "antd";
+import { FC } from "react";
 import { connect } from "react-redux";
-import { Modules } from "../type";
+import { Modules } from "../../types/type";
 const { Option } = Select;
 function Common(props: any) {
-  function exportPDF() {
-    const pdf = document.getElementById("pdf");
-    downloadPDF(pdf!, "前端开发工程师", false, () => {});
-  }
-  function handleChange(element: string, property: string) {
-    return (value: string) => {
-      props.changeGlobalStyle(property, value);
-    };
-  }
+  let [flag,setFlag]=useState(false)
+ 
+  
   const fonts = [
     "16px",
     "18px",
@@ -23,49 +18,52 @@ function Common(props: any) {
     "28px",
     "30px",
   ];
+  const colors = [
+    'red',
+    'blue',
+    'black',
+    'gray',
+    'green'
+  ]
   return (
-    <div className="w-full">
-      <h1 className="w-full h-5 flex-center font-bold font-size">主题设置</h1>
-      <div className="w-full">
-        <div className="w-full flex justify-between">
-          <div>主题颜色</div>
-          <div className="flex">
-            <div
-              onClick={() => {
-                props.changeGlobalStyle("theme", "red");
-              }}
-              className="bg-red-400 rounded-1/2 w-5 h-5"
-            ></div>
-            <div
-              onClick={() => {
-                props.changeGlobalStyle("theme", "blue");
-              }}
-              className="bg-blue-400 rounded-1/2 w-5 h-5"
-            ></div>
-            <div
-              onClick={() => {
-                props.changeGlobalStyle("theme", "gray");
-              }}
-              className="bg-gray-400 rounded-1/2 w-5 h-5"
-            ></div>
-            <div
-              onClick={() => {
-                props.changeGlobalStyle("theme", "green");
-              }}
-              className="bg-green-400 rounded-1/2 w-5 h-5"
-            ></div>
-            <div
-              onClick={() => {
-                props.changeGlobalStyle("theme", "black");
-              }}
-              className="bg-dark-600 rounded-1/2 w-5 h-5"
-            ></div>
-          </div>
+      <div className="w-full rounded-md mb-2  h-12 bg-light-100 flex justify-center items-center">
+        <div className="w-full ">
+          <Select
+            defaultValue="black"
+            style={{ width: 120 }}
+            onChange={(value) => {
+              props.changeGlobalStyle("theme", value);
+            }}
+          >
+            {colors.map((item: string, index: number) => {
+              return (
+                <Option value={item} key={index}>
+                  {item}
+                </Option>
+              );
+            })}
+          </Select>
         </div>
         <div className="w-full flex">
-          <div>模块标题字体大小</div>
           <Select
             defaultValue="18px"
+            style={{ width: 120 }}
+            onChange={(value) => {
+              props.changeGlobalStyle("margin", value);
+            }}
+          >
+            {fonts.map((item: string, index: number) => {
+              return (
+                <Option value={item} key={index}>
+                  {item}
+                </Option>
+              );
+            })}
+          </Select>
+        </div>
+        <div className="w-full flex">
+          <Select
+            defaultValue="10px"
             style={{ width: 120 }}
             onChange={(value) => {
               props.changeGlobalStyle("title", value);
@@ -81,7 +79,6 @@ function Common(props: any) {
           </Select>
         </div>
         <div className="w-full flex">
-          <div>正文字体大小</div>
           <Select
             defaultValue="14px"
             style={{ width: 120 }}
@@ -98,21 +95,7 @@ function Common(props: any) {
             })}
           </Select>
         </div>
-        <div className="">
-          <Button type="primary" shape="default" className="mt-4 block">
-            跟换模板
-          </Button>
-          <Button
-            type="primary"
-            shape="default"
-            className="mt-4 block"
-            onClick={exportPDF}
-          >
-            PDF下载
-          </Button>
-        </div>
       </div>
-    </div>
   );
 }
 

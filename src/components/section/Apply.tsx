@@ -1,11 +1,15 @@
-function Apply({ style, global }: any) {
-  console.log(global);
+function Apply({ style, global, onSelect, info,data }: any) {
   
   return (
-    <div className="w-full  ">
-      <div className="font-bold " style={{ fontSize: global.title }}>
+    <div
+      className="w-full hover:bg-[#efeff0] "
+      onClick={() => {
+        onSelect('Apply');
+      }}
+    >
+      <div className="font-bold border-b " style={{ fontSize: global.title }}>
         <i className="iconfont icon-qiuzhi" style={{ color: global.theme }}></i>
-        求职意向
+        {data.name}
       </div>
       <div className="w-full h-1 bg-gray-400 relative">
         <div className="w-1/4 h-full bg-blue-400 absolute"></div>

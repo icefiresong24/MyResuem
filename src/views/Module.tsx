@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { Switch } from "antd";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
-import { useEffect } from "react";
 import { connect } from "react-redux";
-import { Modules } from "./type";
+import { Modules } from "../types/type";
 interface Props {
   value: any;
-  updateShow:any
+  updateShow: any;
 }
-interface Element{
-  updateShow: any,
-  value:any
+interface Element {
+  updateShow: any;
+  value: any;
 }
 const SortableItem = SortableElement<Element>((props: Props) => {
   const onChange = (item: any) => {
@@ -20,7 +19,7 @@ const SortableItem = SortableElement<Element>((props: Props) => {
   };
   return (
     <li className="list-none flex justify-between h-8 border-dark-50">
-      <div>{props.value.name}</div>
+      <div className="cursor-move">{props.value.name}</div>
       <Switch defaultChecked onChange={onChange(props.value)} />
     </li>
   );
@@ -30,12 +29,7 @@ const SortableList = SortableContainer<any>(({ items, updateShow }: any) => {
   return (
     <ul>
       {items.map((value: any, index: number) => (
-        <SortableItem
-          key={`item-${index}`}
-          index={index}
-          value={value}
-          updateShow={updateShow}
-        />
+        <SortableItem key={`item-${index}`} index={index} value={value} updateShow={updateShow} />
       ))}
     </ul>
   );
@@ -50,22 +44,18 @@ class Module extends Component<any, any> {
   onChange = (item: any) => {
     return (checked: any) => {};
   };
-  componentDidUpdate(prevProps: any) {
-    // 典型用法（不要忘记比较 props）：
-  }
-  // state = {
-  //   items: [{ name: "基本资料" }, { name: "我的简历" },{name:'求职意向'},{name:'教育背景'},{ name: "技能特长" }, { name: "校园经历" },{name:'实习经验'},{name:'工作经验'}],
-  // };
+
   onSortEnd = ({ oldIndex, newIndex }: any) => {
     this.props.moveArray(oldIndex, newIndex);
   };
   render() {
     return (
-      <SortableList
-        items={this.props.value}
-        onSortEnd={this.onSortEnd}
-        updateShow={this.props.updateArray}
-      />
+      <>
+        <div className="h-10 ">
+          模块选择<span className="text-xs">(拖动模块控制模块位置)</span>
+        </div>
+        <SortableList items={this.props.value} onSortEnd={this.onSortEnd} updateShow={this.props.updateArray} />;
+      </>
     );
   }
 }

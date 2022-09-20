@@ -1,0 +1,30 @@
+.bg{
+    // background-image: url('../assets/bg.jpg');
+    // background-size: 100%,100%;
+    background-color: #353944;
+}
+// .color-#{$i}{
+//    color:i
+// }
+// 滚动条宽度
+*::-webkit-scrollbar {
+  width: 6px;
+}
+// 滚动条轨道
+*::-webkit-scrollbar-track {
+  background: rgb(239, 239, 239);
+  border-radius: 2px;
+}
+// 小滑块
+*::-webkit-scrollbar-thumb {
+  background: #40a0ff49;
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #40a0ff;
+}
+
+button{
+    border:1px solid gray;
+    padding:0,5px
+}

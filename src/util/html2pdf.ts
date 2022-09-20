@@ -10,23 +10,12 @@ const downloadPDF = (
   let eleW: number = el.offsetWidth; // 获得该容器的宽
   let eleH: number = el.offsetHeight; // 获得该容器的高
 
-  // let eleOffsetTop: number = el.offsetTop; // 获得该容器到文档顶部的距离
-  // let eleOffsetLeft: number = el.offsetLeft; // 获得该容器到文档最左的距离
-
   let canvas: HTMLCanvasElement = document.createElement('canvas');
-  // let abs: number = 0;
-  // let win_in: number = document.documentElement.clientWidth || document.body.clientWidth; // 获得当前可视窗口的宽度（不包含滚动条）
-  // let win_out: number = window.innerWidth; // 获得当前窗口的宽度（包含滚动条）
-
-  // if (win_out > win_in) {
-  //   abs = (win_out - win_in) / 2; // 获得滚动条宽度的一半
-  // }
   canvas.width = eleW * 2; // 将画布宽&&高放大两倍
   canvas.height = eleH * 2;
 
   let context: any = canvas.getContext('2d');
   context.scale(2, 2);
-  // context.translate(-eleOffsetLeft - abs, -eleOffsetTop);
 
   html2canvas(el, {
     scale: 2, // 设置缩放
@@ -75,38 +64,5 @@ const downloadPDF = (
     callback();
   });
 };
-// const downloadPDF = function (el: HTMLElement,
-//   pdfName: string,
-//   preview: boolean,
-//   callback: Function) {
-//   html2canvas(el, {
-//     logging: false,
-//     scale:2
-//   }).then(function (canvas: HTMLCanvasElement) {
-//     let pdf = new JsPDF("p", "mm", "a4") // A4纸，纵向
-//     let ctx = canvas.getContext("2d")
-//     let a4w = 210*2;
-//     let a4h = 297*2 // A4大小，210mm x 297mm，四边各保留20mm的边距，显示区域190x277
-//     let imgHeight = Math.floor(a4h * canvas.width / a4w) // 按A4显示比例换算一页图像的像素高度
-//     let renderedHeight = 0
-//     while (renderedHeight < canvas.height) {
-//       let page = document.createElement("canvas")
-//       page.width = canvas.width
-//       page.height = Math.min(imgHeight, canvas.height - renderedHeight) // 可能内容不足一页
 
-//       // 用getImageData剪裁指定区域，并画到前面创建的canvas对象中
-//       page.getContext("2d")!.putImageData(ctx!.getImageData(0, renderedHeight, canvas.width*2, Math.min(imgHeight,
-//         canvas.height - renderedHeight)*2), 0, 0)
-//       pdf.addImage(page.toDataURL("image/jpeg", 1.0), "JPEG", 0, 0, a4w, Math.min(a4h, a4w * page.height /
-//         page.width)) // 添加图像到页面，保留10mm边距
-
-//       // 如果后面还有内容，添加一个空页
-//       renderedHeight += imgHeight
-//       if (renderedHeight < canvas.height) {
-//         pdf.addPage()
-//       }
-//     }
-//     pdf.save(pdfName);
-//   })
-// }
 export default downloadPDF;

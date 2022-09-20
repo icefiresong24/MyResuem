@@ -6,6 +6,55 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "658000",
+      "name": "地址",
+      "font_class": "dizhi",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "4488847",
+      "name": "感兴趣职位",
+      "font_class": "ganxingquzhiwei",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "4552970",
+      "name": "邮箱",
+      "font_class": "youxiang",
+      "unicode": "e908",
+      "unicode_decimal": 59656
+    },
+    {
+      "icon_id": "5608845",
+      "name": "工作经验",
+      "font_class": "icon-test",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "10972006",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "11372650",
+      "name": "电话",
+      "font_class": "dianhua",
+      "unicode": "e8ad",
+      "unicode_decimal": 59565
+    },
+    {
+      "icon_id": "435931",
+      "name": "年龄",
+      "font_class": "nianling",
+      "unicode": "e7ba",
+      "unicode_decimal": 59322
+    },
+    {
       "icon_id": "1026421",
       "name": "worker",
       "font_class": "worker",

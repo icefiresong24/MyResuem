@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@wangeditor/editor": "^5.1.18",
+    "@wangeditor/editor-for-react": "^1.0.5",
     "antd": "^4.22.3",
     "array-move": "^4.0.0",
     "html2canvas": "^1.4.1",

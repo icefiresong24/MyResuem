@@ -1,82 +1,54 @@
-import { DeleteOutlined, LeftOutlined } from "@ant-design/icons";
-import { Input, Button } from "antd";
+import { DeleteOutlined, EditOutlined, LeftOutlined } from "@ant-design/icons";
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { Modules } from "../type";
-const { TextArea } = Input;
+import MyEditor from "../myEditor";
+import { Modules } from "../../types/type";
+import ModelSetting from "@/hooks/ModelSetting";
 function Skill(props: any) {
-  const { style } = props.value.find((item: any) => {
+  const { style, name } = props.value.find((item: any) => {
     return item.component == "Skill";
   });
+
   let [info, setInfo] = useState(style.info);
-  function handleChange(value: string, index: number) {
-    setInfo((pre: any) => {
-      let info = JSON.parse(JSON.stringify(pre));
-      info[index] = value;
-      return info;
-    });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  function handleChange(value: string) {
+    props.changeStyle("Skill", "info", value);
   }
   return (
     <Fragment>
-      <LeftOutlined />
-      <span
-        className="cursor-pointer"
-        onClick={() => {
-          props.onSelect("");
-        }}
-      >
-        返回
-      </span>
-      <div className="w-full p-4">
-        <div className="w-full h-5 flex-center">教育背景</div>
-        <div className="w-full">
-          {info.map((item: any, index: number) => {
-            return (
-              <div className="mt4" key={index}>
-                <div className="flex justify-between">
-                  <div>技能{index + 1}</div>
-
-                  <DeleteOutlined
-                    onClick={() => {
-                      setInfo((pre: unknown[]) => {
-                        let info = JSON.parse(JSON.stringify(pre));
-                        info.splice(index, 1);
-                        return info;
-                      });
-                    }}
-                  />
-                </div>
-
-                <TextArea
-                  rows={4}
-                  value={item}
-                  onChange={(e) => handleChange(e.target.value, index)}
-                />
-              </div>
-            );
-          })}
+      <div className="w-full p-4 ">
+        <ModelSetting
+          handleOk={(newTitle: string) => {
+            props.changeName("Skill", newTitle);
+            setIsModalOpen(false);
+          }}
+          title={name}
+          visible={isModalOpen}
+          handleCancel={() => {
+            setIsModalOpen(false);
+          }}
+        ></ModelSetting>
+        <div className="w-full h-5 mb-4  flex justify-between">
+          <div
+            onClick={() => {
+              props.onSelect("");
+            }}
+          >
+            <LeftOutlined />
+            <span className="cursor-pointer">返回</span>
+          </div>
+          <div
+            onClick={() => {
+              setIsModalOpen(true);
+            }}
+          >
+            {name}
+            <EditOutlined />
+          </div>
+          <div>&nbsp;</div>
         </div>
-        <div className="flex-center">
-          <Button
-            type="primary"
-            shape="round"
-            className="mt-4 mr-4"
-            onClick={() => {
-              setInfo([...info, ""]);
-            }}
-          >
-            添加
-          </Button>
-          <Button
-            type="primary"
-            shape="round"
-            className="mt-4"
-            onClick={() => {
-              props.changeStyle("Skill", "info", info);
-            }}
-          >
-            保存
-          </Button>
+        <div className="w-full">
+          <MyEditor content={info} onChange={handleChange}></MyEditor>
         </div>
       </div>
     </Fragment>
@@ -95,6 +67,14 @@ const mapDispatchToProps = (dispatch: any) => ({
       payload: {
         module,
         property,
+        value,
+      },
+    }),
+  changeName: (module: string, value: any) =>
+    dispatch({
+      type: "NAME",
+      payload: {
+        module,
         value,
       },
     }),
