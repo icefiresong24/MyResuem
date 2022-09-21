@@ -20,8 +20,6 @@ const reducer = (state = data, action: Action) => {
       return { value: result,global:state.global };
     case "STYLE":
       let { module, property, value } = action.payload;
-      console.log('value',value);
-      
       let index2 = state.value.findIndex((item: any) => {
         return item.component == module;
       });

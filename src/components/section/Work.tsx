@@ -1,14 +1,10 @@
 
-function Work({ style, global, onSelect }: any) {
-  function editWork(index: number) {
-    onSelect('Work',index);
-  }
-  
+function Work({ style, global, onSelect,data }: any) {
   return (
     <div className="w-full  ">
       <div className="font-bold " style={{ fontSize: global.title }}>
         <i className="iconfont icon-_xiangmujingyan" style={{ color: global.theme }}></i>
-        项目经验
+        {data.name}
       </div>
       <div className="w-full h-1 bg-gray-400 relative">
         <div className="w-1/4 h-full bg-blue-400 absolute"></div>
@@ -19,7 +15,7 @@ function Work({ style, global, onSelect }: any) {
           className="hover:bg-[#efeff0]"
           style={{ fontSize: global.text }}
           onClick={() => {
-            editWork(index);
+            onSelect("Work", index);
           }}
         >
           <div className="flex justify-between">

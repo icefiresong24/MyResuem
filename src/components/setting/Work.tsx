@@ -16,10 +16,14 @@ function Work(props: any) {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projectName, setProjectName] = useState(style.info[props.selectModulesIndex].projectName);
+  
   let [info, setInfo] = useState(style.info[props.selectModulesIndex]);
+  
+  
   function handledate(dateStrings: [string, string]) {
     let [startTime, endTime] = dateStrings;
     //bug:单独执行一句生效,一起执行只执行最后一个handlechange
+    setInfo({...info,startTime,endTime})
     handleChange(startTime, "startTime");
     handleChange(endTime, "endTime");
   }
