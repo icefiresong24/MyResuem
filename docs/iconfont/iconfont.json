@@ -1,0 +1,121 @@
+{
+  "id": "3622404",
+  "name": "github简历",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "658000",
+      "name": "地址",
+      "font_class": "dizhi",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "4488847",
+      "name": "感兴趣职位",
+      "font_class": "ganxingquzhiwei",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "4552970",
+      "name": "邮箱",
+      "font_class": "youxiang",
+      "unicode": "e908",
+      "unicode_decimal": 59656
+    },
+    {
+      "icon_id": "5608845",
+      "name": "工作经验",
+      "font_class": "icon-test",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "10972006",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "11372650",
+      "name": "电话",
+      "font_class": "dianhua",
+      "unicode": "e8ad",
+      "unicode_decimal": 59565
+    },
+    {
+      "icon_id": "435931",
+      "name": "年龄",
+      "font_class": "nianling",
+      "unicode": "e7ba",
+      "unicode_decimal": 59322
+    },
+    {
+      "icon_id": "1026421",
+      "name": "worker",
+      "font_class": "worker",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "3900089",
+      "name": "项目经验",
+      "font_class": "xiangmujingyan",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "6894492",
+      "name": "自我介绍",
+      "font_class": "ziwojieshao",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "9058312",
+      "name": "9_1项目经验",
+      "font_class": "_xiangmujingyan",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "9940284",
+      "name": "skill",
+      "font_class": "skill",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "10330716",
+      "name": "education",
+      "font_class": "education",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "14689202",
+      "name": "求职",
+      "font_class": "qiuzhi",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "15838549",
+      "name": "work",
+      "font_class": "work",
+      "unicode": "e683",
+      "unicode_decimal": 59011
+    },
+    {
+      "icon_id": "16394900",
+      "name": "校园",
+      "font_class": "xiaoyuan",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    }
+  ]
+}
