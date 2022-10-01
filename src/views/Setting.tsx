@@ -9,11 +9,12 @@ import School from "../components/setting/School";
 import Info from "../components/setting/Info";
 import { useEffect } from "react";
 function Setting(props: any) {
+  
   useEffect(() => {});
   const Element: any = function switchComponent({ name, onSelect, selectModulesIndex }: any) {
     switch (name) {
       case "Basic":
-        return <Basic onSelect={onSelect} selectModulesIndex={selectModulesIndex}/>;
+        return <Basic  onSelect={onSelect} selectModulesIndex={selectModulesIndex}/>;
       case "Apply":
         return <Apply onSelect={onSelect} selectModulesIndex={selectModulesIndex}/>;
       case "Work":

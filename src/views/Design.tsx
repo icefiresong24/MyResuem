@@ -14,7 +14,6 @@ function Design(props: any) {
     let observer = new ResizeObserver((entries: ResizeObserverEntry[]) =>
       entries.forEach((item) => {
         let height = item.contentRect.height;
-        console.log(height);
         setPage(Math.ceil(height / 841));
         dom!.style.height = Math.ceil(height / 841) * 841 + "px";
       })
@@ -26,7 +25,6 @@ function Design(props: any) {
   //如果选中工作模块等要循环遍历，设置选中内容index
   const [selectModulesIndex, setSelectModulesIndex] = useState<number|undefined>(undefined);
   function handleSelect(component: string, index?: number) {
-    console.log(component,index);
     setSelectModulesIndex(index)
     setSelect(component)
   }

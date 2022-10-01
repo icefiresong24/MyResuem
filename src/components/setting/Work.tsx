@@ -16,16 +16,20 @@ function Work(props: any) {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projectName, setProjectName] = useState(style.info[props.selectModulesIndex].projectName);
+  const monthFormat = "YYYY年MM月";
   
   let [info, setInfo] = useState(style.info[props.selectModulesIndex]);
   
-  
-  function handledate(dateStrings: [string, string]) {
-    let [startTime, endTime] = dateStrings;
-    //bug:单独执行一句生效,一起执行只执行最后一个handlechange
-    setInfo({...info,startTime,endTime})
-    handleChange(startTime, "startTime");
-    handleChange(endTime, "endTime");
+  function handledate(dateStrings: string, property: string) {
+    if (property == 'startTime') {
+      
+      setInfo({...info,startTime:dateStrings})
+      handleChange(dateStrings, "startTime");
+    } else {
+      setInfo({ ...info, endTime: dateStrings });
+      
+      handleChange(dateStrings, "endTime");
+    }
   }
   //redux改变数据
   function handleChange(value: string, property: string) {
@@ -41,7 +45,7 @@ function Work(props: any) {
       <div className="w-full p-4">
         <ModelSetting
           handleOk={(newTitle: string) => {
-            props.changeName("Work",newTitle)
+            props.changeName("Work", newTitle);
             setIsModalOpen(false);
           }}
           title={name}
@@ -80,15 +84,26 @@ function Work(props: any) {
               name="projectName"
             />
             <div>时间</div>
-            <Space direction="vertical" size={12}>
-              <RangePicker
-                defaultValue={[moment(info.startTime, dateFormat), moment(info.endTime, dateFormat)]}
-                format={dateFormat}
-                onChange={(_, dateStrings: [string, string]) => {
-                  handledate(dateStrings);
+            <div className="flex justify-between">
+              <DatePicker
+                className="w-60"
+                onChange={(date, dateString) => {
+                  handledate(dateString, "startTime");
                 }}
+                defaultValue={moment(info.startTime, monthFormat)}
+                format={monthFormat}
+                picker="month"
               />
-            </Space>
+              <DatePicker
+                className="w-60"
+                onChange={(date, dateString) => {
+                  handledate(dateString, "endTime");
+                }}
+                defaultValue={moment(info.endTime, monthFormat)}
+                format={monthFormat}
+                picker="month"
+              />
+            </div>
 
             <div>经历描述</div>
             <div className="w-full">

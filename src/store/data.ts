@@ -112,8 +112,8 @@ const data: Data = {
       style: {
         info: [
           {
-            startTime: "2022-1-1",
-            endTime: "2022-1-1",
+            startTime: "2022年09月",
+            endTime: "2022年09月",
             company: "996神仙难活公司",
             role: "前端负责人",
             duty: "<p>负责项目的核心模块前端设计和研发工作</p>",
@@ -136,22 +136,22 @@ const data: Data = {
       style: {
         info: [
           {
-            startTime: "2022-08-13",
-            endTime: "2022-08-13",
+            startTime: "2022年09月",
+            endTime: "2022年09月",
             projectName: "上班摸鱼管理系统",
             role: "前端负责人",
             description: "<p>熟练使用Vue2、3及周边生态开发应用程序。结合HTML5、CSS3编写高质量、符合语义化的代码；</p><p>熟练使用 Element UI、Ant Design of Vue、Echarts等UI库，实现快速构建网页；</p><p>熟悉使用TypeScript，熟悉ECMAScript6语法，在项目中实际运用；</p><p>熟悉Webpack、Babel等项目打包工具，Git版本控制工具，实现多人协同开发。</p><p>了解 WebGIS，熟悉 Cesium 地图引擎及高德地图百度地图等地图 API；</p><p>了解HTTP协议、Linux系统常用操作，express框架。</p>",
           },
           {
-            startTime: "2022-08-13",
-            endTime: "2022-08-13",
+            startTime: "2022年09月",
+            endTime: "2022年09月",
             projectName: "下班喝酒管理系统",
             role: "前端负责人",
             description: "<p>熟练使用Vue2、3及周边生态开发应用程序。结合HTML5、CSS3编写高质量、符合语义化的代码；</p><p>熟练使用 Element UI、Ant Design of Vue、Echarts等UI库，实现快速构建网页；</p><p>熟悉使用TypeScript，熟悉ECMAScript6语法，在项目中实际运用；</p><p>熟悉Webpack、Babel等项目打包工具，Git版本控制工具，实现多人协同开发。</p><p>了解 WebGIS，熟悉 Cesium 地图引擎及高德地图百度地图等地图 API；</p><p>了解HTTP协议、Linux系统常用操作，express框架。</p>",
           },
           {
-            startTime: "2022-08-13",
-            endTime: "2022-08-13",
+            startTime: "2022年09月",
+            endTime: "2022年09月",
             projectName: "放假屏蔽管理系统",
             role: "前端负责人",
             description: "<p>熟练使用Vue2、3及周边生态开发应用程序。结合HTML5、CSS3编写高质量、符合语义化的代码；</p><p>熟练使用 Element UI、Ant Design of Vue、Echarts等UI库，实现快速构建网页；</p><p>熟悉使用TypeScript，熟悉ECMAScript6语法，在项目中实际运用；</p><p>熟悉Webpack、Babel等项目打包工具，Git版本控制工具，实现多人协同开发。</p><p>了解 WebGIS，熟悉 Cesium 地图引擎及高德地图百度地图等地图 API；</p><p>了解HTTP协议、Linux系统常用操作，express框架。</p>",

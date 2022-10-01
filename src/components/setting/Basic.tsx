@@ -1,33 +1,35 @@
-import { Select,Input,Button } from "antd";
-import { Fragment, useState } from 'react'
+import { Select, Input, Button } from "antd";
+import { Fragment, useState } from "react";
 import { Modules } from "../../types/type";
 import { connect } from "react-redux";
 import { LeftOutlined } from "@ant-design/icons";
 import ModelSetting from "@/hooks/ModelSetting";
 function Basic(props: any) {
-  const {style}=props.value.find((item:any) => {
-  return item.component=='Basic'
-  })
-    let [name, setName] = useState(style.info.name);
-    let [age, setAge] = useState(style.info.age);
-    let [address, setAddress] = useState(style.info.address);
-    let [phone, setPhone] = useState(style.info.phone);
-    let [email, setEmail] = useState(style.info.email);
-    let [work, setWork] = useState(style.info.work);
-    let [job, setJob] = useState(style.info.job);
-    let [github, setGithub] = useState(style.info.github);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { style } = props.value.find((item: any) => {
+    return item.component == "Basic";
+  });
+  let [name, setName] = useState(style.info.name);
+  let [age, setAge] = useState(style.info.age);
+  let [address, setAddress] = useState(style.info.address);
+  let [phone, setPhone] = useState(style.info.phone);
+  let [email, setEmail] = useState(style.info.email);
+  let [work, setWork] = useState(style.info.work);
+  let [job, setJob] = useState(style.info.job);
+  let [github, setGithub] = useState(style.info.github);
 
-  function handleChange(){
-      props.changeStyle("Basic", 'info',  {name,age,work,job,address,phone,email,github});
-    };
-  
+  function test(e: any) {
+    setName(e.target.value);
+  }
+  function handleChange() {
+    props.changeStyle("Basic", "info", { name, age, work, job, address, phone, email, github });
+  }
+
   function upload(e: any) {
     let reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = (e: any) => {
       var url = reader.result;
-      props.changeStyle("Basic", "img",  url);
+      props.changeStyle("Basic", "img", url);
     };
   }
   return (
@@ -51,13 +53,7 @@ function Basic(props: any) {
         </div>
         <div className="w-full">
           <div>姓名</div>
-          <Input
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            name="name"
-          />
+          <Input value={name} onChange={test} name="name" />
           <div>
             <div>电话</div>
             <Input

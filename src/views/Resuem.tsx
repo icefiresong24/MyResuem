@@ -58,8 +58,7 @@ function Resuem(props: any) {
       </div>
       {new Array(props.page).fill(" ").map((item: any, index: number) => {
         return (
-          <div key={index} style={{ top: (index + 1) * 841 }} className=" absolute w-full h-5 bg-gray-400 ">
-            第{index + 1}页
+          <div key={index} style={{ top: (index + 1) * 841 }} className=" absolute w-full h-0.25  bg-gray-400 ">
           </div>
         );
       })}
