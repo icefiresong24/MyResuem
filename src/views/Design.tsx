@@ -16,8 +16,8 @@ function Design(props: any) {
         let height = item.contentRect.height;
         console.log(height);
         
-        setPage(Math.ceil(height / 841));
-        dom!.style.height = Math.ceil(height / 841) * 841 + "px";
+        // setPage(Math.ceil(height / 841));
+        // dom!.style.height = Math.ceil(height / 841) * 841 + "px";
       })
     );
     observer.observe(dom!);
