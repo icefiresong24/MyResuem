@@ -14,6 +14,8 @@ function Design(props: any) {
     let observer = new ResizeObserver((entries: ResizeObserverEntry[]) =>
       entries.forEach((item) => {
         let height = item.contentRect.height;
+        console.log(height);
+        
         setPage(Math.ceil(height / 841));
         dom!.style.height = Math.ceil(height / 841) * 841 + "px";
       })

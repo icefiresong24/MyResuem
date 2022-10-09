@@ -45,7 +45,7 @@ function Resuem(props: any) {
                 //   props.onSelect(item.component,index);
                 // }}
                 key={index}
-                className={props.current == item.component ? " border border-green-400 border-dashed" : ""}
+                // className="hover:border border-green-400 border-dashed"
                 style={{ marginBottom: props.global.margin }}
               >
                 <Element onSelect={props.onSelect} name={item.component} info={item.info} style={item.style} global={props.global} data={item}  />

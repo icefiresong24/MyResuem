@@ -1,24 +1,43 @@
+import ModelSetting from "@/hooks/ModelSetting";
 import downloadPDF from "@/util/html2pdf";
+import { EditOutlined } from "@ant-design/icons";
 
 function Header() {
+  const [apply, setApply] = useState("前端开发工程师");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   //跳转GitHub
   function goGithub() {
     window.open("https://github.com/icefiresong24/MyResuem");
-    }
-//下载pdf
+  }
+  //下载pdf
   function exportPDF() {
     const pdf = document.getElementById("pdf");
-    downloadPDF(pdf!, "前端开发工程师", false, () => {});
+    downloadPDF(pdf!, apply, false, () => {});
   }
   return (
     <div className="flex items-center bg-[#202329] text-white justify-between h-10">
+      <ModelSetting
+        handleOk={(newTitle: string) => {
+          setApply(newTitle);
+        }}
+        title={apply}
+        visible={isModalOpen}
+        handleCancel={() => {
+          setIsModalOpen(false);
+        }}
+      ></ModelSetting>
       <div className="cursor-pointer" onClick={goGithub}>
         github
       </div>
-      <div>前端开发工程师</div>
-      <div onClick={exportPDF}>PDF下载</div>
-      <div>更换模板</div>
-      <div>登录</div>
+      <div className="cursor-pointer" onClick={exportPDF}>PDF下载</div>
+      <div onClick={() => {
+        setIsModalOpen(true)
+      }} className="cursor-pointer">
+        {apply}
+        <EditOutlined />
+      </div>
+      <div className="cursor-pointer">更换模板</div>
+      <div className="cursor-pointer">登录</div>
     </div>
   );
 }

@@ -16,14 +16,14 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
     e.stopPropagation();
     let res2 = [...style.info];
     (res2 as any).push({
-      startTime: "",
-      endTime: "",
+      startTime: null,
+      endTime: null,
       projectName: "",
       role: "",
       description: "",
     });
     changeStyle("Work", "info", res2);
-    onSelect("Work", res2.length - 1);
+    onSelect("Work", res2.length-1);
   }
   function arrowMove(index: number, type: string) {
     let res = [...style.info];
@@ -39,7 +39,7 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
     changeStyle("Work", "info", res);
   }
   return (
-    <div className="w-full  work-add">
+    <div className="w-full  work-add " >
       <div className="font-bold relative" style={{ fontSize: global.title }}>
         <i className="iconfont icon-_xiangmujingyan" style={{ color: global.theme }}></i>
         {data.name}
@@ -51,7 +51,7 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
       {style.info.map((item: any, index: number) => (
         <div
           key={index}
-          className="work relative hover:bg-[#efeff0]"
+          className="work relative hover:bg-[#efeff0] "
           style={{ fontSize: global.text }}
           onClick={() => {
             onSelect("Work", index);
@@ -67,11 +67,11 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
           <div className=" work-content" dangerouslySetInnerHTML={{ __html: item.description }}>
             {/* {item.description} */}
           </div>
-          <div className="control flex flex-col absolute -right-7 top-0   hidden">
+          <div className="control flex flex-col absolute right-0 top-6  hidden ">
             <Icon
               className="cursor-pointer"
               fontSize={24}
-              color="#505667"
+              color="#56cf2d"
               icon="bi:arrow-up-square-fill"
               onClick={(e) => {
                 e.stopPropagation();
@@ -79,9 +79,9 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
               }}
             />
             <Icon
-              className="cursor-pointer"
+              className="cursor-pointer mt-2"
               fontSize={24}
-              color="#505667"
+              color="#56cf2d"
               icon="bi:arrow-down-square-fill"
               onClick={(e) => {
                 e.stopPropagation();
@@ -89,9 +89,9 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
               }}
             />
             <Icon
-              className="cursor-pointer"
+              className="cursor-pointer mt-2"
               fontSize={24}
-              color="#505667"
+              color="#56cf2d"
               icon="ep:delete-filled"
               onClick={(e) => {
                 e.stopPropagation();

@@ -1,15 +1,12 @@
 import { Input, Button, DatePicker, Space } from "antd";
 import { connect } from "react-redux";
 import { Modules } from "../../types/type";
-const { TextArea } = Input;
 
 import moment from "moment";
 import { EditOutlined, LeftOutlined } from "@ant-design/icons";
 import { Fragment } from "react";
 import ModelSetting from "@/hooks/ModelSetting";
 import MyEditor from "../myEditor";
-const dateFormat = "YYYY/MM/DD";
-const { RangePicker } = DatePicker;
 function Work(props: any) {
   const { style, name } = props.value.find((item: any) => {
     return item.component == "Work";
@@ -17,28 +14,28 @@ function Work(props: any) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projectName, setProjectName] = useState(style.info[props.selectModulesIndex].projectName);
   const monthFormat = "YYYY年MM月";
-  
   let [info, setInfo] = useState(style.info[props.selectModulesIndex]);
-  
+  const [test, setTest] = useState({
+    name: "zhangsan",
+    age: "",
+  });
   function handledate(dateStrings: string, property: string) {
-    if (property == 'startTime') {
-      
-      setInfo({...info,startTime:dateStrings})
+    if (property == "startTime") {
+      setInfo({ ...info, startTime: dateStrings });
       handleChange(dateStrings, "startTime");
     } else {
       setInfo({ ...info, endTime: dateStrings });
-      
       handleChange(dateStrings, "endTime");
     }
   }
   //redux改变数据
   function handleChange(value: string, property: string) {
     let res = { ...info };
+
     res[property] = value;
-    let res2 =[...style.info];
+    let res2 = [...style.info];
     res2[props.selectModulesIndex] = res;
     props.changeStyle("Work", "info", res2);
-    
   }
   return (
     <Fragment>
@@ -80,6 +77,7 @@ function Work(props: any) {
               onChange={(e) => {
                 setProjectName(e.target.value);
                 handleChange(e.target.value, "projectName");
+                setInfo({ ...info, projectName: e.target.value });
               }}
               name="projectName"
             />
@@ -90,7 +88,7 @@ function Work(props: any) {
                 onChange={(date, dateString) => {
                   handledate(dateString, "startTime");
                 }}
-                defaultValue={moment(info.startTime, monthFormat)}
+                defaultValue={info.startTime ? moment(info.startTime, monthFormat) : undefined}
                 format={monthFormat}
                 picker="month"
               />
@@ -99,7 +97,7 @@ function Work(props: any) {
                 onChange={(date, dateString) => {
                   handledate(dateString, "endTime");
                 }}
-                defaultValue={moment(info.endTime, monthFormat)}
+                defaultValue={info.endTime ? moment(info.endTime, monthFormat) : undefined}
                 format={monthFormat}
                 picker="month"
               />
@@ -110,27 +108,14 @@ function Work(props: any) {
               <MyEditor
                 content={info.description}
                 onChange={(val: string) => {
+                  setInfo({ ...info, description: val });
                   handleChange(val, "description");
                 }}
               ></MyEditor>
             </div>
           </div>
         </div>
-        <div className="flex justify-between">
-          <Button
-            type="primary"
-            shape="round"
-            onClick={() => {
-              // setInfo((pre: unknown[]) => {
-              //   let info = JSON.parse(JSON.stringify(pre));
-              //   info.splice(index, 1);
-              //   return info;
-              // });
-            }}
-          >
-            删除
-          </Button>
-        </div>
+        
       </div>
     </Fragment>
   );
