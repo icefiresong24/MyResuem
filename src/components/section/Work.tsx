@@ -1,42 +1,43 @@
-import "./work.scss";
-import { Icon } from "@iconify/react";
-import { connect } from "react-redux";
-import React from "react";
-import { Modules } from "@/types/type";
+import './work.scss'
+import { Icon } from '@iconify/react'
+import { connect } from 'react-redux'
+import React from 'react'
+import type { Modules } from '@/types/type'
 function Work({ style, global, onSelect, data, changeStyle }: any) {
-  //redux改变数据
+  // redux改变数据
 
   function deleteWorkExperience(index: number) {
-    let res2 = [...style.info];
-    res2.splice(index, 1);
-    changeStyle("Work", "info", res2);
+    const res2 = [...style.info]
+    res2.splice(index, 1)
+    changeStyle('Work', 'info', res2)
     onSelect('')
   }
   function addWorkExperience(e: React.MouseEvent) {
-    e.stopPropagation();
-    let res2 = [...style.info];
+    e.stopPropagation()
+    const res2 = [...style.info];
     (res2 as any).push({
       startTime: null,
       endTime: null,
-      projectName: "",
-      role: "",
-      description: "",
-    });
-    changeStyle("Work", "info", res2);
-    onSelect("Work", res2.length-1);
+      projectName: '',
+      role: '',
+      description: '',
+    })
+    changeStyle('Work', 'info', res2)
+    onSelect('Work', res2.length - 1)
   }
   function arrowMove(index: number, type: string) {
-    let res = [...style.info];
-    if (type == "up" && index != 0) {
-      let data = res[index - 1];
-      res[index - 1] = res[index];
-      res[index] = data;
-    } else if (index != res.length - 1) {
-      let data = res[index + 1];
-      res[index + 1] = res[index];
-      res[index] = data;
+    const res = [...style.info]
+    if (type === 'up' && index !== 0) {
+      const data = res[index - 1]
+      res[index - 1] = res[index]
+      res[index] = data
     }
-    changeStyle("Work", "info", res);
+    else if (index !== res.length - 1) {
+      const data = res[index + 1]
+      res[index + 1] = res[index]
+      res[index] = data
+    }
+    changeStyle('Work', 'info', res)
   }
   return (
     <div className="w-full  work-add " >
@@ -54,7 +55,7 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
           className="work relative hover:bg-[#efeff0] "
           style={{ fontSize: global.text }}
           onClick={() => {
-            onSelect("Work", index);
+            onSelect('Work', index)
           }}
         >
           <div className="flex justify-between">
@@ -74,8 +75,8 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
               color="#56cf2d"
               icon="bi:arrow-up-square-fill"
               onClick={(e) => {
-                e.stopPropagation();
-                arrowMove(index, "up");
+                e.stopPropagation()
+                arrowMove(index, 'up')
               }}
             />
             <Icon
@@ -84,8 +85,8 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
               color="#56cf2d"
               icon="bi:arrow-down-square-fill"
               onClick={(e) => {
-                e.stopPropagation();
-                arrowMove(index, "down");
+                e.stopPropagation()
+                arrowMove(index, 'down')
               }}
             />
             <Icon
@@ -94,31 +95,31 @@ function Work({ style, global, onSelect, data, changeStyle }: any) {
               color="#56cf2d"
               icon="ep:delete-filled"
               onClick={(e) => {
-                e.stopPropagation();
-                deleteWorkExperience(index);
+                e.stopPropagation()
+                deleteWorkExperience(index)
               }}
             />
           </div>
         </div>
       ))}
     </div>
-  );
+  )
 }
 const mapStateToProps = (state: Modules) => {
   return {
     value: state.value,
-  };
-};
+  }
+}
 const mapDispatchToProps = (dispatch: any) => ({
   changeStyle: (module: string, property: string, value: any) =>
     dispatch({
-      type: "STYLE",
+      type: 'STYLE',
       payload: {
         module,
         property,
         value,
       },
     }),
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Work);
+export default connect(mapStateToProps, mapDispatchToProps)(Work)
