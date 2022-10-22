@@ -1,29 +1,30 @@
-import ModelSetting from "@/hooks/ModelSetting";
-import downloadPDF from "@/util/html2pdf";
-import { EditOutlined } from "@ant-design/icons";
+import { EditOutlined } from '@ant-design/icons'
+import ModelSetting from '@/hooks/ModelSetting'
+import downloadPDF from '@/util/html2pdf'
 
 function Header() {
-  const [apply, setApply] = useState("前端开发工程师");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  //跳转GitHub
+  const [apply, setApply] = useState('前端开发工程师')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  // 跳转GitHub
   function goGithub() {
-    window.open("https://github.com/icefiresong24/MyResuem");
+    window.open('https://github.com/icefiresong24/MyResuem')
   }
-  //下载pdf
+
+  // 下载pdf
   function exportPDF() {
-    const pdf = document.getElementById("pdf");
-    downloadPDF(pdf!, apply, false, () => {});
+    const pdf = document.getElementById('pdf')
+    downloadPDF(pdf!, apply, false, () => { })
   }
   return (
     <div className="flex items-center bg-[#202329] text-white justify-between h-10">
       <ModelSetting
         handleOk={(newTitle: string) => {
-          setApply(newTitle);
+          setApply(newTitle)
         }}
         title={apply}
         visible={isModalOpen}
         handleCancel={() => {
-          setIsModalOpen(false);
+          setIsModalOpen(false)
         }}
       ></ModelSetting>
       <div className="cursor-pointer" onClick={goGithub}>
@@ -39,7 +40,7 @@ function Header() {
       <div className="cursor-pointer">更换模板</div>
       <div className="cursor-pointer">登录</div>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
