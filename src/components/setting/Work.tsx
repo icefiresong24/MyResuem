@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 import { EditOutlined, LeftOutlined } from '@ant-design/icons'
 import { Fragment } from 'react'
+import { produce } from 'immer'
 import type { Modules } from '../../types/type'
 import MyEditor from '../myEditor'
 import ModelSetting from '@/hooks/ModelSetting'
@@ -17,7 +18,10 @@ function Work(props: any) {
 
   function handledate(dateStrings: string, property: string) {
     if (property === 'startTime') {
-      setInfo({ ...info, startTime: dateStrings })
+      // setInfo({ ...info, startTime: dateStrings })
+      setInfo(produce(info, (state) => {
+        state.startTime = dateStrings
+      }))
       handleChange(dateStrings, 'startTime')
     }
     else {
@@ -102,17 +106,13 @@ function Work(props: any) {
 
             <div>经历描述</div>
             <div className="w-full">
-              {/* <textarea className='w-100 h-20' onChange={
-                (e) => {
-                  setInfo({ ...info, description: e.target.value })
-                  handleChange(e.target.value, 'description')
-                }
-              } name="content" defaultValue={info.description}>
-              </textarea> */}
               <MyEditor
                 content={info.description}
                 onChange={(val: string) => {
-                  setInfo({ ...info, description: val })
+                  // setInfo({ ...info, description: val })
+                  setInfo(produce(info, (state) => {
+                    state.description = val
+                  }))
                   handleChange(val, 'description')
                 }}
               ></MyEditor>

@@ -1,14 +1,10 @@
 import { EditOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 import ModelSetting from '@/hooks/ModelSetting'
 import downloadPDF from '@/util/html2pdf'
-
 function Header() {
   const [apply, setApply] = useState('前端开发工程师')
   const [isModalOpen, setIsModalOpen] = useState(false)
-  // 跳转GitHub
-  function goGithub() {
-    window.open('https://github.com/icefiresong24/MyResuem')
-  }
 
   // 下载pdf
   function exportPDF() {
@@ -27,18 +23,16 @@ function Header() {
           setIsModalOpen(false)
         }}
       ></ModelSetting>
-      <div className="cursor-pointer" onClick={goGithub}>
-        github
-      </div>
-      <div className="cursor-pointer" onClick={exportPDF}>PDF下载</div>
-      <div onClick={() => {
+      <a href="https://github.com/icefiresong24/MyResuem">github</a>
+      <button className="cursor-pointer border-none" onClick={exportPDF}>PDF下载</button>
+      <button onClick={() => {
         setIsModalOpen(true)
-      }} className="cursor-pointer">
+      }} className="cursor-pointer border-none">
         {apply}
         <EditOutlined />
-      </div>
-      <div className="cursor-pointer">更换模板</div>
-      <div className="cursor-pointer">登录</div>
+      </button>
+      <button className="cursor-pointer border-none">更换模板</button>
+      <Link to={{ pathname: '/login' }}>登录</Link>
     </div>
   )
 }

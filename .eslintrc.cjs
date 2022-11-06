@@ -31,5 +31,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     'no-console': 'off',
+    'eqeqeq': 'off',
+    'no-case-declarations': 'off',
   },
 }

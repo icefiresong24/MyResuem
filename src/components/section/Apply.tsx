@@ -1,10 +1,9 @@
-function Apply({ style, global, onSelect, info,data }: any) {
-  
+function Apply({ style, global, onSelect, data }: any) {
   return (
     <div
       className="w-full hover:bg-[#efeff0] "
       onClick={() => {
-        onSelect('Apply');
+        onSelect('Apply')
       }}
     >
       <div className="font-bold border-b " style={{ fontSize: global.title }}>
@@ -20,7 +19,7 @@ function Apply({ style, global, onSelect, info,data }: any) {
         <span>{style.info.status}</span>
       </div>
     </div>
-  );
+  )
 }
 
-export default Apply;
+export default Apply
