@@ -44,8 +44,6 @@ function MyEditor(props: Prop) {
 
   // 改变内容时触发
   function handleChangle(value: string) {
-    console.log(111)
-
     setHtml(value)
     props.onChange(value)
   }

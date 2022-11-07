@@ -1,29 +1,29 @@
-import React, { Component } from "react";
-import { Switch } from "antd";
-import { SortableContainer, SortableElement } from "react-sortable-hoc";
-import { connect } from "react-redux";
-import { Modules } from "../types/type";
+import React, { Component } from 'react'
+import { Switch } from 'antd'
+import { SortableContainer, SortableElement } from 'react-sortable-hoc'
+import { connect } from 'react-redux'
+import type { Modules } from '../types/type'
 interface Props {
-  value: any;
-  updateShow: any;
+  value: any
+  updateShow: any
 }
 interface Element {
-  updateShow: any;
-  value: any;
+  updateShow: any
+  value: any
 }
 const SortableItem = SortableElement<Element>((props: Props) => {
   const onChange = (item: any) => {
     return (checked: any) => {
-      props.updateShow(item, checked);
-    };
-  };
+      props.updateShow(item, checked)
+    }
+  }
   return (
     <li className="list-none flex justify-between h-8 border-dark-50">
       <div className="cursor-move">{props.value.name}</div>
       <Switch defaultChecked onChange={onChange(props.value)} />
     </li>
-  );
-});
+  )
+})
 
 const SortableList = SortableContainer<any>(({ items, updateShow }: any) => {
   return (
@@ -32,22 +32,24 @@ const SortableList = SortableContainer<any>(({ items, updateShow }: any) => {
         <SortableItem key={`item-${index}`} index={index} value={value} updateShow={updateShow} />
       ))}
     </ul>
-  );
-});
+  )
+})
 
 class Module extends Component<any, any> {
   constructor(props: any) {
-    super(props);
+    super(props)
 
-    this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this)
   }
+
   onChange = (item: any) => {
-    return (checked: any) => {};
-  };
+    return (checked: any) => {}
+  }
 
   onSortEnd = ({ oldIndex, newIndex }: any) => {
-    this.props.moveArray(oldIndex, newIndex);
-  };
+    this.props.moveArray(oldIndex, newIndex)
+  }
+
   render() {
     return (
       <>
@@ -56,18 +58,18 @@ class Module extends Component<any, any> {
         </div>
         <SortableList items={this.props.value} onSortEnd={this.onSortEnd} updateShow={this.props.updateArray} />;
       </>
-    );
+    )
   }
 }
 const mapStateToProps = (state: Modules) => {
   return {
     value: state.value,
-  };
-};
+  }
+}
 const mapDispatchToProps = (dispatch: any) => ({
   updateArray: (module: any, checked: any) =>
     dispatch({
-      type: "SHOW",
+      type: 'SHOW',
       payload: {
         module,
         checked,
@@ -75,12 +77,12 @@ const mapDispatchToProps = (dispatch: any) => ({
     }),
   moveArray: (oldIndex: any, newIndex: any) =>
     dispatch({
-      type: "MOVE",
+      type: 'MOVE',
       payload: {
         oldIndex,
         newIndex,
       },
     }),
-});
-connect(mapDispatchToProps)(SortableItem);
-export default connect(mapStateToProps, mapDispatchToProps)(Module);
+})
+connect(mapDispatchToProps)(SortableItem)
+export default connect(mapStateToProps, mapDispatchToProps)(Module)

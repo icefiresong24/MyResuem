@@ -1,60 +1,65 @@
-import { Input, Button, DatePicker, Space } from "antd";
-import { connect } from "react-redux";
-import { Modules } from "../../types/type";
-const { TextArea } = Input;
+import { Button, DatePicker, Input, Space } from 'antd'
+import { connect } from 'react-redux'
 
-import moment from "moment";
-import { EditOutlined, LeftOutlined } from "@ant-design/icons";
-import { Fragment } from "react";
-import ModelSetting from "@/hooks/ModelSetting";
-import MyEditor from "../myEditor";
-const dateFormat = "YYYY/MM/DD";
-const { RangePicker } = DatePicker;
+import moment from 'moment'
+import { EditOutlined, LeftOutlined } from '@ant-design/icons'
+import { Fragment } from 'react'
+import type { Modules } from '../../types/type'
+import MyEditor from '../myEditor'
+import ModelSetting from '@/hooks/ModelSetting'
+const { TextArea } = Input
+const dateFormat = 'YYYY/MM/DD'
+const { RangePicker } = DatePicker
 function Internship(props: any) {
-  const monthFormat = "YYYY年MM月";
+  const monthFormat = 'YYYY年MM月'
 
   const { style, name } = props.value.find((item: any) => {
-    return item.component == "Internship";
-  });
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [company, setCompany] = useState(style.info[props.selectModulesIndex].company);
-  let [info, setInfo] = useState(style.info[props.selectModulesIndex]);
+    return item.component == 'Internship'
+  })
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [company, setCompany] = useState(style.info[props.selectModulesIndex].company)
+  const [info, setInfo] = useState(style.info[props.selectModulesIndex])
+  const [projectDetail, setProjectDetail] = useState(style.info[props.selectModulesIndex].duty)
+  useEffect(() => {
+    handleChange(projectDetail, 'duty')
+  }, [projectDetail])
   function handledate(dateStrings: string, property: string) {
-    if (property == "startTime") {
-      setInfo({ ...info, startTime: dateStrings });
-      handleChange(dateStrings, "startTime");
-    } else {
-      setInfo({ ...info, endTime: dateStrings });
+    if (property == 'startTime') {
+      setInfo({ ...info, startTime: dateStrings })
+      handleChange(dateStrings, 'startTime')
+    }
+    else {
+      setInfo({ ...info, endTime: dateStrings })
 
-      handleChange(dateStrings, "endTime");
+      handleChange(dateStrings, 'endTime')
     }
   }
-  //redux改变数据
+  // redux改变数据
   function handleChange(value: string, property: string) {
-    let res = { ...info };
-    res[property] = value;
-    let res2 = [...style.info];
-    res2[props.selectModulesIndex] = res;
-    props.changeStyle("Internship", "info", res2);
+    const res = { ...info }
+    res[property] = value
+    const res2 = [...style.info]
+    res2[props.selectModulesIndex] = res
+    props.changeStyle('Internship', 'info', res2)
   }
   return (
     <Fragment>
       <div className="w-full p-4">
         <ModelSetting
           handleOk={(newTitle: string) => {
-            props.changeName("Internship", newTitle);
-            setIsModalOpen(false);
+            props.changeName('Internship', newTitle)
+            setIsModalOpen(false)
           }}
           title={name}
           visible={isModalOpen}
           handleCancel={() => {
-            setIsModalOpen(false);
+            setIsModalOpen(false)
           }}
         ></ModelSetting>
         <div className="w-full h-5 mb-4  flex justify-between">
           <div
             onClick={() => {
-              props.onSelect("");
+              props.onSelect('')
             }}
           >
             <LeftOutlined />
@@ -62,7 +67,7 @@ function Internship(props: any) {
           </div>
           <div
             onClick={() => {
-              setIsModalOpen(true);
+              setIsModalOpen(true)
             }}
           >
             <span>{name}</span>
@@ -76,8 +81,8 @@ function Internship(props: any) {
             <Input
               value={company}
               onChange={(e) => {
-                setCompany(e.target.value);
-                handleChange(e.target.value, "company");
+                setCompany(e.target.value)
+                handleChange(e.target.value, 'company')
               }}
               name="company"
             />
@@ -86,7 +91,7 @@ function Internship(props: any) {
               <DatePicker
                 className="w-60"
                 onChange={(date, dateString) => {
-                  handledate(dateString, "startTime");
+                  handledate(dateString, 'startTime')
                 }}
                 defaultValue={moment(info.startTime, monthFormat)}
                 format={monthFormat}
@@ -95,7 +100,7 @@ function Internship(props: any) {
               <DatePicker
                 className="w-60"
                 onChange={(date, dateString) => {
-                  handledate(dateString, "endTime");
+                  handledate(dateString, 'endTime')
                 }}
                 defaultValue={moment(info.endTime, monthFormat)}
                 format={monthFormat}
@@ -106,9 +111,9 @@ function Internship(props: any) {
             <div>经历描述</div>
             <div className="w-full">
               <MyEditor
-                content={info.duty}
+                content={projectDetail}
                 onChange={(val: string) => {
-                  handleChange(val, "duty");
+                  setProjectDetail(val)
                 }}
               ></MyEditor>
             </div>
@@ -131,18 +136,18 @@ function Internship(props: any) {
         </div>
       </div>
     </Fragment>
-  );
+  )
 }
 
 const mapStateToProps = (state: Modules) => {
   return {
     value: state.value,
-  };
-};
+  }
+}
 const mapDispatchToProps = (dispatch: any) => ({
   changeStyle: (module: string, property: string, value: any) =>
     dispatch({
-      type: "STYLE",
+      type: 'STYLE',
       payload: {
         module,
         property,
@@ -151,12 +156,12 @@ const mapDispatchToProps = (dispatch: any) => ({
     }),
   changeName: (module: string, value: any) =>
     dispatch({
-      type: "NAME",
+      type: 'NAME',
       payload: {
         module,
         value,
       },
     }),
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Internship);
+export default connect(mapStateToProps, mapDispatchToProps)(Internship)

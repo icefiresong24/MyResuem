@@ -13,6 +13,10 @@ function Work(props: any) {
   })
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [projectName, setProjectName] = useState(style.info[props.selectModulesIndex].projectName)
+  const [projectDetail, setProjectDetail] = useState(style.info[props.selectModulesIndex].description)
+  useEffect(() => {
+    handleChange(projectDetail, 'description')
+  }, [projectDetail])
   const monthFormat = 'YYYY年MM月'
   const [info, setInfo] = useState(style.info[props.selectModulesIndex])
 
@@ -107,13 +111,9 @@ function Work(props: any) {
             <div>经历描述</div>
             <div className="w-full">
               <MyEditor
-                content={info.description}
+                content={projectDetail}
                 onChange={(val: string) => {
-                  // setInfo({ ...info, description: val })
-                  setInfo(produce(info, (state) => {
-                    state.description = val
-                  }))
-                  handleChange(val, 'description')
+                  setProjectDetail(val)
                 }}
               ></MyEditor>
             </div>
