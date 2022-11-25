@@ -1,4 +1,4 @@
-import { Button, DatePicker, Input, Space } from 'antd'
+import { Button, DatePicker, Input } from 'antd'
 import { connect } from 'react-redux'
 
 import moment from 'moment'
@@ -7,9 +7,6 @@ import { Fragment } from 'react'
 import type { Modules } from '../../types/type'
 import MyEditor from '../myEditor'
 import ModelSetting from '@/hooks/ModelSetting'
-const { TextArea } = Input
-const dateFormat = 'YYYY/MM/DD'
-const { RangePicker } = DatePicker
 function Internship(props: any) {
   const monthFormat = 'YYYY年MM月'
 

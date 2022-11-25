@@ -22,8 +22,7 @@ function Work(props: any) {
 
   function handledate(dateStrings: string, property: string) {
     if (property === 'startTime') {
-      // setInfo({ ...info, startTime: dateStrings })
-      setInfo(produce(info, (state) => {
+      setInfo(produce(info, (state: any) => {
         state.startTime = dateStrings
       }))
       handleChange(dateStrings, 'startTime')
@@ -33,7 +32,7 @@ function Work(props: any) {
       handleChange(dateStrings, 'endTime')
     }
   }
-  // redux改变数据
+  /** redux改变数据 */
   function handleChange(value: string, property: string) {
     const res = { ...info }
 

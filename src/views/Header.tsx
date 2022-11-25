@@ -12,7 +12,7 @@ function Header() {
     downloadPDF(pdf!, apply, false, () => { })
   }
   return (
-    <div className="flex items-center bg-[#202329] text-white justify-between h-10">
+    <header className="flex items-center bg-[#202329] text-white justify-between h-10">
       <ModelSetting
         handleOk={(newTitle: string) => {
           setApply(newTitle)
@@ -33,7 +33,7 @@ function Header() {
       </button>
       <button className="cursor-pointer border-none">更换模板</button>
       <Link to={{ pathname: '/login' }}>登录</Link>
-    </div>
+    </header>
   )
 }
 
