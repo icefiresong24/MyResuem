@@ -38,12 +38,6 @@ const SortableList = SortableContainer<any>(({ items, updateShow }: any) => {
 class Module extends Component<any, any> {
   constructor(props: any) {
     super(props)
-
-    this.onChange = this.onChange.bind(this)
-  }
-
-  onChange = (item: any) => {
-    return (checked: any) => {}
   }
 
   onSortEnd = ({ oldIndex, newIndex }: any) => {

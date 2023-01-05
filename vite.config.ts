@@ -9,6 +9,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  build: {
+    outDir: 'resume',
+  },
   base: './',
   server: {
     port: 3000,

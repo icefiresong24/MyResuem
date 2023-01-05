@@ -1,4 +1,4 @@
-function Error(props:any) {
-  return <div>404</div>;
+function Error() {
+  return <div>404</div>
 }
-export default Error;
+export default Error

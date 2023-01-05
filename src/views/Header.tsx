@@ -1,10 +1,12 @@
 import { EditOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import ModelSetting from '@/hooks/ModelSetting'
 import downloadPDF from '@/util/html2pdf'
 function Header() {
   const [apply, setApply] = useState('前端开发工程师')
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const { state } = useLocation()
 
   // 下载pdf
   function exportPDF() {
@@ -32,7 +34,9 @@ function Header() {
         <EditOutlined />
       </button>
       <button className="cursor-pointer border-none">更换模板</button>
-      <Link to={{ pathname: '/login' }}>登录</Link>
+      {
+        (state as any).username ? <div>{(state as any).username}</div> : <Link to={{ pathname: '/login' }}>登录</Link>
+      }
     </header>
   )
 }

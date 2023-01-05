@@ -5,7 +5,7 @@ import UserLogin from '@/components/login/userLogin'
 import UserRegister from '@/components/login/userRegister'
 function Router() {
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <Routes>
         <Route path="/login" element={<UserLogin/>}></Route>
         <Route path="/register" element={<UserRegister/>}></Route>

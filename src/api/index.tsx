@@ -1,6 +1,6 @@
 import axios from 'axios'
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-// import { message } from 'antd'
+import { message } from 'antd'
 interface RequestInterceptors {
   // 请求拦截
   requestInterceptors?: (config: AxiosRequestConfig) => AxiosRequestConfig
@@ -15,7 +15,7 @@ interface RequestInterceptors {
 //   interceptors?: RequestInterceptors
 // }
 interface ResponceData {
-  data: object
+  data: any
   success: boolean
   message: string
 }
@@ -75,7 +75,12 @@ class Request {
 
 const interceptors_response = {
   responseInterceptors: (response: AxiosResponse) => {
-    // const { code, message: msg, data } = response.data
+    const { success, message: msg, data } = response.data
+    if (!success) {
+      message.warn(
+        msg,
+      )
+    }
     // if (code == 401) {
     //   localStorage.clear()
     //   console.log('clear')
@@ -86,7 +91,7 @@ const interceptors_response = {
     //   message.error(msg)
     //   return data
     // }
-    return response.data
+    return data
   },
   responseInterceptorsCatch: (error: AxiosError) => {
     console.log(error.response!.request.responseURL, '网络错误')

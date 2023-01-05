@@ -1,5 +1,5 @@
-function Internship({style,global,data,onSelect}:any) {
-    return (
+function Internship({ style, global, data, onSelect }: any) {
+  return (
       <div className="w-full ">
         <div className="font-bold " style={{ fontSize: global.title }}>
           <i className="iconfont icon-work " style={{ color: global.theme }}></i>
@@ -14,7 +14,7 @@ function Internship({style,global,data,onSelect}:any) {
             key={index}
             style={{ fontSize: global.text }}
             onClick={() => {
-              onSelect("Internship", index);
+              onSelect('Internship', index)
             }}
           >
             <div className="flex justify-between">
@@ -28,7 +28,7 @@ function Internship({style,global,data,onSelect}:any) {
           </div>
         ))}
       </div>
-    );
+  )
 }
 
-export default Internship;
+export default Internship
